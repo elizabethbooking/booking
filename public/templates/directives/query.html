@@ -1,0 +1,27 @@
+<div data-directive="query">
+  <form ng-submit="submit()">
+    <fieldset>
+      <div class="field">
+        <label>Check In</label>
+        <input type="date" name="check_in" ng-model="query.check_in" required>
+      </div>
+      <div class="field">
+        <label>Check Out</label>
+        <input type="date" name="check_out" ng-model="query.check_out" value="{{three_days}}" required>
+      </div>
+      <div class="col-6">
+        <label>Adults</label>
+        <select ng-model="query.adults" convert-to-number required>
+          <option ng-repeat="adult in max_adults" value="{{adult}}" ng-selected="query.adults == adult">{{adult}}</option>
+        </select>
+      </div>
+      <div class="col-6">
+        <label>Children</label>
+        <select ng-model="query.childs" convert-to-number required>
+          <option ng-repeat="child in max_childs" value="{{child}}" ng-selected="query.childs == child">{{child}}</option>
+        </select>
+      </div>
+      <button type="submit" class="btn btn-primary center-block">Search Availability</button>
+    </fieldset>
+  </form>
+</div>

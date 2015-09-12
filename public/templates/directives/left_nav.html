@@ -1,0 +1,39 @@
+<div ng-show="$root.loggedIn" id="nav-col">
+  <div class="collapse navbar-collapse navbar-ex1-collapse" id="sidebar-nav">	
+    <ul class="nav nav-pills nav-stacked">
+      <li class="active">
+        <a href="#/">
+          <i class="fa fa-dashboard"></i>
+          <span>Dashboard</span>
+        </a>
+      </li>
+      <li>
+        <a href="#/policies" ng-click="policies(show)">
+          <i class="fa fa-calendar"></i>
+          <span>Booking Policies</span>
+        </a>
+      </li>
+      <li>
+        <a href="#/inventory">
+          <i class="fa fa-table"></i>
+          <span>Property Management</span>
+        </a>
+      </li>
+      <li>
+        <a href="#/" class="dropdown-toggle">
+          <i class="fa fa-users"></i>
+          <span>Users</span>
+          <i class="fa fa-chevron-circle-down drop-icon"></i>
+        </a>
+        <ul class="submenu">
+          <li>
+            <a href="#/users">User list</a>
+          </li>
+          <li>
+            <a href="user-profile.html">User profile</a>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+</div>

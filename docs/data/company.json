@@ -1,0 +1,19 @@
+db.company.insert{
+  id        : 10001,
+  category  : "hotel",
+  abbr      : "oden",
+  name      : "Hotel Oden",
+  desc      : "Hotel Oden",
+  url       : "hoteloden.com",
+  contact : {
+    address : [ "123 main street" ],
+    city    : "Cayes",
+    country : "Haiti",
+    phone   : "5553453434",
+    email   : "sferrus@gmail.com"
+  },
+  billing   : {
+    currency  : "USD",
+    email     : "sferrus@gmail.com"
+  }
+});

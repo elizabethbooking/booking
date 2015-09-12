@@ -1,0 +1,18 @@
+{
+	company_id: '10001',
+	id: '',
+	name: {first: '', last: ''},
+	telephone: '',
+	email: '',
+	start: {date: '', time: ''},
+	end: {date: '', time: ''},
+	rooms: {rooms.company_id: '', rooms.id: ''},
+	policy: {policy.company_id: '', policy.id: ''},
+	customer: {customer.company_id: '', customer.id: ''}
+	occupants: {adults: '', children: ''},
+	price: '',
+	status: '',
+	date: <timestamp>
+}
+
+

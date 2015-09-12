@@ -1,0 +1,31 @@
+<div data-directive="query,availability">
+  <ul>
+    <li ng-repeat="room in inventory.results">
+      <div class="main-box clearfix">
+        <div class="table-responsive">
+          <form ng-submit="submit()">
+            <table class="table table-products table-hover">
+              <tbody>
+                <tr>
+                  <td>
+                    <img src="img/deluxe.jpg" alt="" style="max-width:100px; max-height:100px;"/>
+                    <button type="submit" class="btn btn-primary center-block">Book Room</button>
+                  </td>
+                  <td>
+                    <p>
+                      <span class="name">{{room.title}}</span>
+                      <span class="price"><i class="fa fa-money"></i> &dollar;{{room.base_price}} per night</span>
+                    </p>
+                    <span class="warranty">
+                      <i class="fa fa-certificate"></i> {{room.description}}
+                    </span>
+                  </td>
+                </tr>  
+              </tbody>
+            </table>
+          </div>
+        </form>
+      </div>
+    </li>
+  </ul>
+</div>

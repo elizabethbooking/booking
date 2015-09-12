@@ -1,0 +1,18 @@
+db.users.insert{
+  company_id: '10001',
+  user: 'oden_admin',
+  pass: 'xxxxx',
+  name: {first: '', last:''},
+  email: 'sferrus@gmail.com',
+  role.name: 'admin',
+  activity log: []
+}
+
+db.users.insert({
+  user        : 'super_admin',
+  pass        : 'password',
+  name        : {first: '', last:''},
+  email       : 'sfe.com',
+  role        : 'admin',
+  log         : []
+});

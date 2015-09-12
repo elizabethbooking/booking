@@ -1,0 +1,7 @@
+{
+  company_id: '10001',
+  name: 'admin',
+  read: [ALL], //list of site section identifiers
+  write: [ALL] //list of site section identifiers
+}
+

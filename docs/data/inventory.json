@@ -1,0 +1,46 @@
+{
+	company_id: '10001',
+	id: 101,
+	type: 'room',
+	title: 'Standard room',
+	description: 'This modern double room includes a Nespresso coffee machine, a dining table, microwave and fridge. 
+	  Room Facilities: Safe, Air conditioning, Desk, Extra long beds (> 6.5 ft), Heating, Carpeted, Soundproof, Bathtub, 
+	  Hairdryer, Free toiletries, Toilet, Bathroom, Slippers, Telephone, Radio, CD Player, Satellite channels, Cable channels, 
+	  Flat-screen TV, Tea/Coffee maker, Minibar, Kitchenette, Coffee machine, Dining table, Alarm clock, Towels, Linens
+	  Free WiFi is available in all rooms.',
+	category: 'Standard Room',
+	images: [],
+	status: 'active',
+	exception_dates: [start: '', end: ''],
+	base_price: '100'
+}
+
+{
+	company_id: '10001',
+	id: 102,
+	type: 'room',
+	title: 'Deluxe Single Room',
+	description: 'This modern room includes a Nespresso coffee machine, a dining table, microwave and fridge. 
+	  Room Facilities: Safe, Air conditioning, Desk, Extra long beds (> 6.5 ft), Heating, Carpeted, Soundproof, Bathtub, 
+	  Hairdryer, Free toiletries, Toilet, Bathroom, Slippers, Telephone, Radio, CD Player, Satellite channels, Cable channels, 
+	  Flat-screen TV, Tea/Coffee maker, Minibar, Kitchenette, Coffee machine, Dining table, Alarm clock, Towels, Linens
+	  Free WiFi is available in all rooms.',
+	category: 'Bungalow',
+	images: [string],
+	status: 'active',
+	exception_dates: [start: '', end: ''],
+	base_price: '125'
+}
+
+{
+	company_id: '10001',
+	id: 'airxferpu',
+	type: 'transport',
+	title: 'Airport Pickup',
+	description: 'Enjoy air-conditioned transportation from the hotel to the airport',
+	category: 'Bungalow',
+	images: [string],
+	status: 'active',
+	exception_dates: [start: '', end: ''],
+	base_price: '20'
+}

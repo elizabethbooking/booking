@@ -1,0 +1,8 @@
+{
+	company_id: '10001',
+    id: '',
+    name: {first: '', last: ''},
+    address: {address1: '', address2: '', city: '', postal_code: '', country: ''}
+    email: '',
+    telephone: ''
+}

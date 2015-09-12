@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html ng-app="Booking">
+<head>
+  <base href="/admin">
+  <title>Elizabeth Booking Administration</title>
+  <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no" />
+  <link href="css/bootstrap/bootstrap.css" rel="stylesheet" />
+  <link rel="stylesheet" href="/css/admin_lib.css">
+  <link rel="stylesheet" href="/css/admin.css">
+  <script type="text/javascript" src="/js/libs.js"></script>
+  <script type="text/javascript" src="/js/admin.js"></script>
+  <link rel="stylesheet" type="text/css" href="css/layout.css">
+  <link rel="stylesheet" type="text/css" href="css/elements.css">
+</head>
+<body class="container-fluid">
+  <header>
+    <top-nav></top-nav>
+  </header>
+  <main>
+    <section class="col-lg-3" left-nav></section>
+    <section class="col-lg-9" ng-view></section>
+  </main>
+  <footer>
+    <footer-nav></footer-nav>
+  </footer>
+  </body>
+</html>
+

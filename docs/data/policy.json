@@ -1,0 +1,15 @@
+{
+  company_id: '',
+  id: '',
+  type: '',
+  title: '',
+  conditions: '',
+  minimum: {days: '', hours: ''}
+  rooms: {rooms.company_id: '', [rooms.id: '']},
+  adjustment: '',
+  adjustment_amount: '',
+  start: {datetime: ''},
+  end: {datetime: ''},
+  recurring: {start_day: '', end_day: '', start_time: '', end_time: '', exp_datetime: ''},
+  status: ''
+}
