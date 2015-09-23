@@ -3,7 +3,7 @@
     <li ng-repeat="room in inventory.results">
       <div class="main-box clearfix">
         <div class="table-responsive">
-          <form ng-submit="submit()">
+          <form ng-submit="submit(room)">
             <table class="table table-products table-hover">
               <tbody>
                 <tr>
@@ -14,7 +14,9 @@
                   <td>
                     <p>
                       <span class="name">{{room.title}}</span>
-                      <span class="price"><i class="fa fa-money"></i> &dollar;{{room.base_price}} per night</span>
+                      <span class="price"><i class="fa fa-money"></i> &dollar;{{room.base_price}} per night
+                               
+                      </span>
                     </p>
                     <span class="warranty">
                       <i class="fa fa-certificate"></i> {{room.description}}

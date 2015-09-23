@@ -1,0 +1,47 @@
+<div class="row">
+	<div class="col-xs-3 col-md-3">
+
+	 <query></query>
+	</div>
+ <div class="col-xs-6 col-md-6">
+  <br>
+    <div id="form-container">
+     <div class="page-header text-center">
+       <h2>Booking Process</h2>
+          <div  id="status-buttons" class="text-center">
+              <a ui-sref-active="active" ui-sref=".customerinfo"><span>1</span>Guest Information</a>
+              <a ui-sref-active="active" ui-sref=".payment"><span>3</span> Payment</a>
+              <a ui-sref-active="active" ui-sref=".paymentConfirmation"><span>4</span> Confirmation</a>
+
+          </div>
+
+      </div> 
+     <div ng-show="hidepromo" class="col-xs-4 col-xs-push-3">
+       <h5>Do you  have a Promo Code ?  </h5>
+      <div class="form-group">
+		    <label for="name">Promo Code </label>
+		    <input type="text" class="form-control" name="lname" ng-model="promocode">
+		</div>
+
+		<a class="btn btn-warning" ng-click="promo()" >Proceed </a>
+    </div>
+    <form id="signup-form" ng-submit="processForm()">
+             
+
+     <div id="form-views" ui-view></div>
+    </form>     
+
+   </div>
+  </div>
+
+ <div class="col-xs-3 col-md-3">
+   <h3>Summary </h3>
+
+      <p>Room Picked :{{ formData.roomDetails.id }} </p>
+      <p>Start Date : </p>
+      <p>End Date  : </p>
+      <p>Total Price  : {{ formData.roomDetails.base_price }} </p>
+    
+ </div>
+
+ </div>

@@ -17,8 +17,8 @@ reload      = browserSync.reload;
 files = {
   libs  : [
     'bower_components/angular/angular.js',
-    'bower_components/angular-route/angular-route.js',
     'bower_components/angular-cookies/angular-cookies.js',
+    'bower_components/angular-ui-router/release/angular-ui-router.js',
     'bower_components/moment/moment.js',
     'bower_components/underscore/underscore.js'
   ],
@@ -37,6 +37,7 @@ files = {
   app_lib_css   : [
     'bower_components/angular/angular-csp.css',
     'app/css/bootstrap/bootstrap.css',
+    'app/css/custom.css'
   ],
   admin_lib_css   : [
     'bower_components/angular/angular-csp.css',
@@ -44,6 +45,10 @@ files = {
     'app/css/libs/**/*.css',
     'app/css/compiled/*.css'
   ],
+  app_css : [
+    'app/css/custom.css'
+  ],
+
   app_less  : [
     'app/less/app.less',
     'app/less/component/**/*.less',
@@ -96,6 +101,12 @@ gulp.task('admin_lib_css', function(){
     .pipe(minifyCss())
     .pipe(gulp.dest('public/css'))
 });
+gulp.task('app_css', function(){
+  return gulp.src(files.app_css)
+    .pipe(concat('app.css'))
+    .pipe(minifyCss())
+    .pipe(gulp.dest('public/css'))
+});
 
 gulp.task('app_less', function(){
   return  gulp.src(files.app_less)
@@ -128,11 +139,11 @@ gulp.task('server', function(){
 
 gulp.task('watch', function(){
   gulp.watch(
-    [files.app, files.admin, files.app_less, files.admin_less, 'public/index.html', 'public/admin.html', 'public/templates/**/*'],
+    [files.app, files.admin, files.app_less, files.admin_less,files.app_css, 'public/index.html', 'public/admin.html', 'public/templates/**/*'],
     ['app', 'admin', 'app_less', 'admin_less', reload]
   );
 });
 
-gulp.task('dev', ['libs', 'app', 'admin', 'app_lib_css', 'admin_lib_css', 'app_less', 'admin_less', 'server', 'browser-sync', 'watch']);
+gulp.task('dev', ['libs', 'app', 'admin', 'app_css','app_lib_css', 'admin_lib_css', 'app_less', 'admin_less', 'server', 'browser-sync', 'watch']);
 gulp.task('prod', ['libs', 'app', 'admin', 'app_lib_css', 'admin_lib_css', 'app_less', 'admin_less', 'css', 'server']);
 

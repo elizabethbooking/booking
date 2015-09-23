@@ -16,7 +16,7 @@ LocalStrategy = require('passport-local').Strategy;
 Model         = require('./app/db/schema.js');
 app           = express();
 
-mongoose.connect('mongodb://localhost/booking');
+mongoose.connect('mongodb://127.0.0.1/booking');
 
 app.use(express.static(path.resolve(__dirname, 'public')));
 app.use(bodyParser.json());
@@ -27,20 +27,24 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 passport.use(new LocalStrategy(function(username, password, done){
+
+
   Model.user.findOne({username:username}, function(err, obj){
     var user, shasum;
     if (err) { return done(err); }
     else {
+
       user = obj.toObject();
       shasum = crypto.createHash('sha1');
       shasum.update(password, 'utf8');
     }
+    /*   un-comment this later ..
     if (!user) {
       return done(null, false, {message: 'Incorrect email.'});
     }
     if (shasum.digest('hex') !== user.password) {
       return done(null, false, {message: 'Incorrect password.'});
-    }
+    }*/
 
     return done(null, user);
   });
@@ -76,6 +80,7 @@ app.post('/api/login', passport.authenticate('local'), function(req, res){
  * Find available inventory, based on a date range
  */
 app.post('/api/availability/:company_id', function(req, res){
+
   var query = {'$or':[
       {'$and': [
         {'end.date': {'$gt': req.body.check_in}},
@@ -94,7 +99,9 @@ app.post('/api/availability/:company_id', function(req, res){
         Model.inventory.find(query)
           .exec(function(err, available){
             if (err) res.send(err);
-            else res.json(available);
+            else{
+             res.json(available);
+            }
           });
       }
     }
@@ -140,6 +147,16 @@ app.get('/api/:model/:id/:key/:value', function(req, res){
   }
   else res.end();  
 });
+/***************  create reservation data ****************/
+  app.post('/api/reservation', function(req, res){
+    console.log(req.body);
+    //1. insert data in reservation collection
+    //2.insert data in customer collections
+    //3. send mail to Admin
+      res.json(200,{success: "Ok"});
+  });
+
+
 /**********************************************************************************/
 function isAuthenticated(req, res, next){
   if (req.isAuthenticated()) {

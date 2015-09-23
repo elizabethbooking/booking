@@ -1,0 +1,26 @@
+
+<div class ="row">
+  <div class ="col-md-6 col-sm-6 ">
+	<div class="text-center">
+	    <legend>Your Basic Information</legend>
+	        <p> Names  :{{ formData.names.firstname }} {{ formData.names.lasttname }} </p>
+	         <p> Email  :{{ formData.email }}  </p>
+	        <p> Phone number  :{{ formData.phone }}  </p>
+	        <p> Address  :{{ formData.address }}  </p>
+	   
+	</div>
+	</div>
+	<div class ="col-md-6 col-sm-6 ">
+
+	 <legend>Your Card Information</legend>
+	        <p> Card names : {{  formData.card.cardholdername }} </p>
+	        <p> Card number : {{  formData.card.number }} </p>
+	        <p> Card CVV : {{  formData.card.number }} </p>
+	</div>
+
+</div>
+<div class ="row">
+  <div class ="col-md-12 col-sm-12 ">
+	 <button type="submit" class="btn btn-danger">Submit</button>
+  </div>
+ </div> 

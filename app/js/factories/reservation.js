@@ -1,10 +1,21 @@
 Booking.factory('ReservationService', ['$http', function($http){
-  return {
-    data : function(callback) {
-      $http.get('/api/reservation')
-        .success(function(data, status){
-          callback(data);
-        });
-    }
-  };
+     var reservation={};
+
+       reservation.data=function(){
+          return  $http.get('/api/reservation');
+       
+       };
+
+       reservation.query=function(querry){
+           return  $http.get('/api/reservation');
+       }
+
+       reservation.create=function(data){
+           return  $http.post('/api/reservation',data);
+       }
+
+
+     return reservation;
+
+  
 }]);
