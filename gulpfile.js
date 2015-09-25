@@ -20,8 +20,9 @@ files = {
     'bower_components/angular-cookies/angular-cookies.js',
     'bower_components/angular-ui-router/release/angular-ui-router.js',
     'bower_components/moment/moment.js',
-    'bower_components/underscore/underscore.js'
-  ],
+    'bower_components/underscore/underscore.js',
+    'bower_components/pagination/pagination.js'
+      ],
   app   : [
     'app/js/modules/app.js',
     'app/js/factories/**/*.js',
@@ -36,8 +37,7 @@ files = {
   ],
   app_lib_css   : [
     'bower_components/angular/angular-csp.css',
-    'app/css/bootstrap/bootstrap.css',
-    'app/css/custom.css'
+    'app/css/bootstrap/bootstrap.css'
   ],
   admin_lib_css   : [
     'bower_components/angular/angular-csp.css',

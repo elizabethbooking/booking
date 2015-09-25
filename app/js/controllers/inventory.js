@@ -4,4 +4,7 @@ Booking.controller('InventoryController', ['$rootScope', 'InventoryService', fun
   $rootScope.$on('query:results', function(){
     this.results = InventoryService.results;
   }.bind(this));
+
+
+
 }]);

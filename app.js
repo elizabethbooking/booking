@@ -153,7 +153,7 @@ app.get('/api/:model/:id/:key/:value', function(req, res){
     //1. insert data in reservation collection
     //2.insert data in customer collections
     //3. send mail to Admin
-      res.json(200,{success: "Ok"});
+      res.status(200).json({success: "Ok"});
   });
 
 

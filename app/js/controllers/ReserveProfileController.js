@@ -1,3 +1,3 @@
-Booking.controller('ReserveProfileControler', ['ReservationService', function(ReservationService){
+Booking.controller('bookingController', ['ReservationService', function(ReservationService){
 
 }]);

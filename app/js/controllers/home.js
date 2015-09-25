@@ -7,4 +7,7 @@ Booking.controller('HomeController', ['CompanyService', function(CompanyService)
     _self.company = data;
     console.log(data);
   });
+
+
+
 }]);

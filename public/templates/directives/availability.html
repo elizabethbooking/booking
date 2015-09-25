@@ -1,33 +1,45 @@
-<div data-directive="query,availability">
-  <ul>
-    <li ng-repeat="room in inventory.results">
-      <div class="main-box clearfix">
-        <div class="table-responsive">
-          <form ng-submit="submit(room)">
-            <table class="table table-products table-hover">
-              <tbody>
-                <tr>
-                  <td>
-                    <img src="img/deluxe.jpg" alt="" style="max-width:100px; max-height:100px;"/>
-                    <button type="submit" class="btn btn-primary center-block">Book Room</button>
-                  </td>
-                  <td>
-                    <p>
-                      <span class="name">{{room.title}}</span>
-                      <span class="price"><i class="fa fa-money"></i> &dollar;{{room.base_price}} per night
-                               
-                      </span>
-                    </p>
-                    <span class="warranty">
-                      <i class="fa fa-certificate"></i> {{room.description}}
-                    </span>
-                  </td>
-                </tr>  
-              </tbody>
-            </table>
-          </div>
-        </form>
-      </div>
-    </li>
-  </ul>
-</div>
+ <div class="list-group">
+
+            <li class="list-group-item"  dir-paginate="room in inventory.results |  itemsPerPage:4">
+              <div class="row">
+                <div class="col-md-3">
+                <img src="img/deluxe.jpg" alt="" class="img-responsive img-thumbnail" /></div>
+                <div class="col-md-6">
+                <p><label>Names </label> {{room.title}}</p>
+                <p><label>Description  </label> {{room.description}}</p>
+                </div>
+                <div class="col-md-3">
+               <p> <label>Price</label> &dollar; {{room.base_price}}</p>
+               <p>  <span ng-class="{'glyphicon glyphicon-ok': $index==number}" ></span></p>
+                </div>
+                
+              </div>
+                <hr/>
+                <div class="row">
+                  <div class="col-md-4"><a class="btn btn-primary">Preview</a></div> 
+                  <div class="col-md-4"><a class="btn btn-warning" ng-click="selectroom($index,room)">Select</a></div> 
+                  <div class="col-md-4"><a class="btn btn-danger" ng-click="removeroom($index)">Remove</a></div> 
+                </div>
+            </li>
+
+  </div>
+
+            <div class="row"> 
+             <div class="text-center"> 
+            <dir-pagination-controls   max-size="4"  direction-links="true"  boundary-links="true" >  </dir-pagination-controls>
+            </div>
+
+           <div class="row">
+             <div class ="col-md-6 col-md-offset-2">
+               <div class="form-group">
+                  
+                      <a  class="btn btn-block btn-primary" ng-click="book()">
+                      Next Section <span class="glyphicon glyphicon-circle-arrow-right"></span>
+                      </a>
+                
+                  </div>
+               </div>   
+           </div> 
+
+
+          

@@ -1,4 +1,4 @@
-Booking.directive('query', ['$rootScope', 'dateFilter', function($rootScope, dateFilter){
+Booking.directive('query', ['$rootScope', 'dateFilter','$location' ,function($rootScope, dateFilter,$location){
   return {
     restrict    : 'E',
     templateUrl : '/templates/directives/query.html',
@@ -16,6 +16,8 @@ Booking.directive('query', ['$rootScope', 'dateFilter', function($rootScope, dat
         InventoryService.query($scope.query, function(results){
           $rootScope.$broadcast('query:results');
         });
+             var det=btoa(angular.toJson($scope.query));
+          $location.path('/booking/'+det);
       }
     }]
   };
