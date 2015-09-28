@@ -1,5 +1,8 @@
-Booking.controller('ReserveController', ['$scope','$stateParams','$state','ReservationService', 'DataService',function($scope,$stateParams,$state,ReservationService,DataService){
+Booking.controller('ReserveController', ['$scope','$stateParams','$state','ReservationService', 'DataService','$anchorScroll','$location',function($scope,$stateParams,$state,ReservationService,DataService,$anchorScroll,$location){
+   $location.hash('top');
 
+      // call $anchorScroll()
+      $anchorScroll();
 
 	
   $scope.formData = {};
@@ -48,6 +51,7 @@ $scope.summary.tPrice= $scope.totalprice();
 
     $scope.proceed=function(){
       var data={};
+        data.id='roominfo';
         data.roomdetails=$scope.formData;
         data.summary=$scope.summary;
          DataService.save(data);

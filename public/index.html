@@ -2,7 +2,7 @@
 <html ng-app="Booking">
 <head>
   <base href="/">
-  <title>Elizabeth Booking</title>
+  <title>Hotel Eden Booking</title>
   <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no" />
   <link rel="stylesheet" href="/css/app_lib.css">
   <link rel="stylesheet" href="/css/app.css">
@@ -116,6 +116,30 @@
 .nav-wizard.nav-justified > li > a {
   padding: 10px 15px;
 }
+
+
+
+#scrollArea {
+  height: 280px;
+  overflow: auto;
+}
+
+#top {
+  display: block;
+  margin-top: 5px;
+}
+header {
+    height: 75px;
+    width: 100%;
+    top: 0px;
+    position: relative;
+    left: 10%;
+    background: #FFF none repeat scroll 0% 0%;
+}
+.container-fluid {
+    margin-top: 15px;
+}
+
 @media (max-width: 768px) {
   .nav-wizard.nav-justified > li > a {
     border-radius: 4px;
@@ -133,15 +157,21 @@
 <body>
 
   <header>
-
+         <hgroup id="site-logo" >
+                        <h1 id="site-title"> 
+                <a href="./Hotel Eden files/Hotel Eden.html" title="Hotel Oloffson" rel="home">
+                  <img src="img/HotelEdenHeader.jpg" alt="Hotel Oloffson">
+                </a>
+              </h1>
+                      
+        </hgroup><!-- #site-logo -->
   </header>
 
 
   <main class="container-fluid">
      
-  <div class="row" >
+  <div class="row" id="top">
    <div class="col-md-12">
-    <br>
       <ul class="nav nav-wizard">
        <li ui-sref-active="active" ><a  ui-sref="home">Search Rooms</a></li>
        <li ui-sref-active="active"><a  ui-sref="booking">Book Rooms </a></li>

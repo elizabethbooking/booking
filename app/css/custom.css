@@ -1,25 +1,4 @@
 
-
-/* form styling */
-#form-container                { background:#ffffff; margin-bottom:20px;
-    border-radius:5px; }
-#form-container .page-header   { background:#8687C5; margin:0; padding:30px; 
-    border-top-left-radius:5px; border-top-right-radius:5px; }
-
-/* numbered buttons */
-#status-buttons                 {  }
-#status-buttons a               { color:#FFF; display:inline-block; font-size:12px; margin-right:10px; text-align:center; text-transform:uppercase; }
-#status-buttons a:hover         { text-decoration:none; }
-
-/* we will style the span as the circled number */
-#status-buttons span            { background:#080808; display:block; height:30px; margin:0 auto 10px; padding-top:5px; width:30px; 
-    border-radius:50%; }
-
-/* active buttons turn light green-blue*/
-#status-buttons a.active span   { background:#00BC8C; }
-
-
-
 .nav-wizard > li {
   float: left;
 }
@@ -125,6 +104,20 @@
 .nav-wizard.nav-justified > li > a {
   padding: 10px 15px;
 }
+
+
+
+#scrollArea {
+  height: 280px;
+  overflow: auto;
+}
+
+#top {
+  display: block;
+  margin-top: 30px;
+}
+
+
 @media (max-width: 768px) {
   .nav-wizard.nav-justified > li > a {
     border-radius: 4px;

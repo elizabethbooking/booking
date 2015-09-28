@@ -8,8 +8,6 @@ Booking.directive('availability', ['$rootScope', 'dateFilter', function($rootSco
       $scope.number=-1;
   $scope.querry= angular.fromJson(atob($stateParams.querry))
      
-      console.log("test");
-      console.log($scope.querry);
 
 $scope.selectroom=function(index,room){
    var rm={};
@@ -33,6 +31,8 @@ $scope.book=function(){
   var k={};
      k.selectedrooms=$scope.selectedrooms;
      k.querry=$scope.querry;
+     k.companyid=$scope.selectedrooms[0].room.company_id;
+     k.id='bookinginfo';
    var det=btoa(angular.toJson(k));
    DataService.save(k);
   $location.path('/reserve/'+det);

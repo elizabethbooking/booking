@@ -3,19 +3,47 @@
   <div class ="col-md-6 col-sm-6 ">
 	<div class="text-center">
 	    <legend>Your Basic Information</legend>
-	        <p> Names  :{{ formData.names.firstname }} {{ formData.names.lasttname }} </p>
-	         <p> Email  :{{ formData.email }}  </p>
-	        <p> Phone number  :{{ formData.phone }}  </p>
-	        <p> Address  :{{ formData.address }}  </p>
+	        <p> Names  :{{ guestinfo.names.firstname }} {{ guestinfo.names.lasttname }} </p>
+	         <p> Email  :{{ guestinfo.email }}  </p>
+	        <p> Phone number  :{{ guestinfo.phone }}  </p>
+	        <p> Address  :{{ guestinfo.address }}  </p>
 	   
 	</div>
 	</div>
 	<div class ="col-md-6 col-sm-6 ">
 
 	 <legend>Your Card Information</legend>
-	        <p> Card names : {{  formData.card.cardholdername }} </p>
-	        <p> Card number : {{  formData.card.number }} </p>
-	        <p> Card CVV : {{  formData.card.number }} </p>
+	        <p> Card names : {{  cardinfo.card.cardholdername }} </p>
+	        <p> Card number : {{ cardinfo.card.number }} </p>
+	        <p> Card CVV : {{  cardinfo.card.number }} </p>
+	</div>
+
+</div>
+
+<div class ="row">
+  <div class ="col-md-6 col-sm-6 ">
+	<div class="text-center">
+	    <legend>Booked Rooms</legend>
+            <div ng-repeat="booking in bookinginfo">
+            
+	          <p>Room Name {{booking.room.id}}</p>
+	          <p>Room Price {{booking.room.base_price}}</p>
+
+	       </div>
+	   
+	</div>
+	</div>
+	<div class ="col-md-6 col-sm-6 ">
+
+	 <legend>Guest Summary</legend>
+	       
+	        <p> Start Date  : {{ guestSummary.check_in }} </p>
+	        <p> End Date : {{  guestSummary.check_out }} </p>
+	         <p> Number of Guest's : {{  guestSummary.adults }} </p>
+	        <p> No.of Children: {{  guestSummary.childs }} </p>
+            <p> No.of Rooms: {{  roomsSummary.noRooms }} </p>
+            <p><b> Total Price  {{  roomsSummary.tPrice }}</b> </p>
+	        
 	</div>
 
 </div>

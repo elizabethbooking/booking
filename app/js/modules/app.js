@@ -29,7 +29,9 @@ $urlRouterProvider.otherwise('/home');
         })
         .state('Confirmation', {
             url: '/Confirmation',
-            templateUrl: '/templates/views/paymentConfirmation.html'
+            templateUrl: '/templates/views/paymentConfirmation.html',
+            controller: 'confirmationController'
+
         })
         .state('guestinfo', {
             url: '/guestinfo',

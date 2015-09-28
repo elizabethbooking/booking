@@ -103,7 +103,7 @@ gulp.task('admin_lib_css', function(){
 });
 gulp.task('app_css', function(){
   return gulp.src(files.app_css)
-    .pipe(concat('app.css'))
+    .pipe(concat('custom.css'))
     .pipe(minifyCss())
     .pipe(gulp.dest('public/css'))
 });
@@ -125,7 +125,7 @@ gulp.task('admin_less', function(){
 gulp.task('browser-sync', function(){
   browserSync({
     proxy : "http://localhost:3000",
-    port  : 3001
+    port  : 3005
   });
 });
 
@@ -145,5 +145,5 @@ gulp.task('watch', function(){
 });
 
 gulp.task('dev', ['libs', 'app', 'admin', 'app_css','app_lib_css', 'admin_lib_css', 'app_less', 'admin_less', 'server', 'browser-sync', 'watch']);
-gulp.task('prod', ['libs', 'app', 'admin', 'app_lib_css', 'admin_lib_css', 'app_less', 'admin_less', 'css', 'server']);
+gulp.task('prod', ['libs', 'app', 'admin','app_css', 'app_lib_css', 'admin_lib_css', 'app_less', 'admin_less', 'css', 'server']);
 

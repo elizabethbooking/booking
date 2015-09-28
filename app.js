@@ -17,6 +17,7 @@ Model         = require('./app/db/schema.js');
 app           = express();
 
 mongoose.connect('mongodb://127.0.0.1/booking');
+var Objectid=mongoose.Types.Objectid;
 
 app.use(express.static(path.resolve(__dirname, 'public')));
 app.use(bodyParser.json());
@@ -149,11 +150,31 @@ app.get('/api/:model/:id/:key/:value', function(req, res){
 });
 /***************  create reservation data ****************/
   app.post('/api/reservation', function(req, res){
-    console.log(req.body);
-    //1. insert data in reservation collection
+   console.log(req.body);
+    
+     var data={};
+       data.company_id=req.body.company_id;
+       data.guestinfo=req.body.guestinfo; 
+       data.price=req.body.roomSummary.tprice;
+      //1. insert data in reservation collection
+
+      data.adults=req.body.guestSummary.adults;
+      data.childs=req.body.guestSummary.childs;
+      data.startdate=req.body.guestSummary.check_in;
+      data.enddate=req.body.guestSummary.check_out;
+
+     // console.log(data);
+       saveReservation(data,function(err,status){
+           if (err){
+            console.log(status);
+            res.status(501).json({error: status});
+          }
+            else {res.status(200).json({success: status});}
+       });
+    
     //2.insert data in customer collections
     //3. send mail to Admin
-      res.status(200).json({success: "Ok"});
+      
   });
 
 
@@ -168,4 +189,53 @@ function isAuthenticated(req, res, next){
 app.listen(3000, function(){
   console.log('Express app started on port 3000');
 });
+
+
+/**********************Database Functions **************************/
+
+
+ var saveReservation =  function (reservationData,callback){
+     console.log(reservationData);
+
+     //what is id in reservation schema
+     //where is the credit card info saved 
+     //what is policy id 
+     //what is customer number also in reservation schema
+     var reservation = Model.reservation({
+            company_id:reservationData.company_id,
+            email:reservationData.guestinfo.email,
+            name :{first:reservationData.guestinfo.names.firstname,last:reservationData.guestinfo.names.lastname},
+            telephone:reservationData.guestinfo.phone,
+            status:'Credit Card Pending',
+            price:reservationData.price,
+            occupants:{adults:reservationData.adults,childs:reservationData.childs},
+            start:{date:reservationData.startdate},
+            end:{date:reservationData.enddate},
+            date: new Date()
+
+
+      });
+     reservation.save(function(err,reservation){
+            if (err){callback(true,err);}
+            else {
+              console.log("return value ");
+              console.log(reservation);
+              callback(false,reservation._id);
+            }
+     });
+
+
+  };
+
+var saveCustomer =  function (customerData,callback){
+
+
+
+  };
+
+var sendMail =  function (callback){
+
+
+
+  };
 
