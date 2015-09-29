@@ -7,7 +7,7 @@ Booking.controller('ReserveController', ['$scope','$stateParams','$state','Reser
 	
   $scope.formData = {};
  $scope.formData.roomDetails=angular.fromJson(atob($stateParams.roomdetails));
-  console.log($scope.formData.roomDetails);
+  //console.log($scope.formData.roomDetails);
 
   $scope.summary={};
   $scope.summary.noRooms=$scope.formData.roomDetails.selectedrooms.length;

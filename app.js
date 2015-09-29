@@ -153,9 +153,10 @@ app.get('/api/:model/:id/:key/:value', function(req, res){
    console.log(req.body);
     
      var data={};
+     var customer={};
        data.company_id=req.body.company_id;
        data.guestinfo=req.body.guestinfo; 
-       data.price=req.body.roomSummary.tprice;
+       data.price=req.body.roomSummary.tPrice;
       //1. insert data in reservation collection
 
       data.adults=req.body.guestSummary.adults;
@@ -164,13 +165,27 @@ app.get('/api/:model/:id/:key/:value', function(req, res){
       data.enddate=req.body.guestSummary.check_out;
 
      // console.log(data);
-       saveReservation(data,function(err,status){
+           customer.company_id=req.body.company_id;
+          customer.guestinfo=req.body.guestinfo;
+      saveCustomer(customer,function(err,status){
            if (err){
             console.log(status);
             res.status(501).json({error: status});
           }
-            else {res.status(200).json({success: status});}
-       });
+            else {
+                   data.customerid='100';
+                  saveReservation(data,function(err,status){
+                 if (err){
+                  console.log(status);
+                  res.status(501).json({error: status});
+                }
+                  else {res.status(200).json({success: status});}
+             });
+            }
+       });      
+
+
+       
     
     //2.insert data in customer collections
     //3. send mail to Admin
@@ -211,6 +226,7 @@ app.listen(3000, function(){
             occupants:{adults:reservationData.adults,childs:reservationData.childs},
             start:{date:reservationData.startdate},
             end:{date:reservationData.enddate},
+            customer:reservationData.customerid,
             date: new Date()
 
 
@@ -229,7 +245,26 @@ app.listen(3000, function(){
 
 var saveCustomer =  function (customerData,callback){
 
+        var customer =Model.customer({
+               id:"100",
+               company_id:customerData.company_id,
+              name :{first:customerData.guestinfo.names.firstname,last:customerData.guestinfo.names.lastname},
+              telephone:customerData.guestinfo.phone,
+              email:customerData.guestinfo.email,
+              address:{ 
+                        street : customerData.guestinfo.address,
+                        city   : customerData.guestinfo.city,
+                        postal_code : customerData.guestinfo.postcode,
+                        country  : customerData.guestinfo.country
+                }
 
+          });
+        customer.save(function(err,customer){
+            if (err){callback(true,err);}
+            else {
+              callback(false,customer._id);
+            }
+     });
 
   };
 

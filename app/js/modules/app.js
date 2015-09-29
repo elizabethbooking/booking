@@ -33,6 +33,12 @@ $urlRouterProvider.otherwise('/home');
             controller: 'confirmationController'
 
         })
+        .state('thanknote', {
+            url: '/thanknote/:reservationid',
+            templateUrl: '/templates/views/thanknote.html',
+            controller: 'thanknoteController'
+
+        })
         .state('guestinfo', {
             url: '/guestinfo',
             templateUrl: '/templates/views/profile.html',

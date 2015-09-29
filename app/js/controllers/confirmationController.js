@@ -1,4 +1,4 @@
-Booking.controller('confirmationController', ['DataService','$state','$scope','ReservationService', function(DataService,$state,$scope,ReservationService){
+Booking.controller('confirmationController', ['DataService','$location','$scope','ReservationService', function(DataService,$location,$scope,ReservationService){
    $scope.formData=DataService.get();     
    $scope.guestinfo= _.findWhere($scope.formData, {id:"guestinfo"}).customerProfile;
    $scope.cardinfo=_.findWhere($scope.formData, {id:"paymentinfo"}).paymentDetails;
@@ -21,9 +21,11 @@ Booking.controller('confirmationController', ['DataService','$state','$scope','R
 
      ReservationService.create(data)
         .success(function (resp) {
-                alert(resp);
-                console.log(resp);
+              //  alert(resp.success);
+                 console.log(resp);
                 $scope.formData="";
+                $location.path('/thanknote/'+resp.success);
+                
                 //clear data service data
                 
             })
