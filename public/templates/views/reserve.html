@@ -1,35 +1,28 @@
 <div class="row">
 
-    <br>
-    <div class="panel panel-default">
-    <div class="panel-body">
-     <div class="col-md-3 col-md-offset-2">
+     <div class="col-md-6">
    
      
 
         <p> <label>Number of Rooms Booked</label> {{summary.noRooms}}</p>
         <p> <label>Total Price </label>  {{summary.tPrice}}</p>
         <p> <label>Number of Guest  </label> {{summary.noGuest}}</p>
-        <p> <label>Start Date </label>  {{summary.startdate | date:'yyyy-MM-dd'}}</p>
-        <p> <label>End Date  </label> {{summary.enddate | date:'yyyy-MM-dd'}}</p>
+       
 
     </div>
-          <div class="col-md-3">
-              <h5>Do you  have a Promo Code ?  </h5>
-            <div class="form-group">
-              <label for="name">Promo Code </label>
-              <input type="text" class="form-control" name="promocode" ng-model="promocode">
-              <button class="btn btn-error">Apply Code</button>
-          </div>
-      </div>
- </div>
- </div>
+
+    <div class="col-md-6">
+        <p> <label>Start Date </label>  {{summary.startdate | date:'yyyy-MM-dd'}}</p>
+        <p> <label>End Date  </label> {{summary.enddate | date:'yyyy-MM-dd'}}</p>
+    </div>
+  </div>      
+
 <div class="row">
    <div class ="col-md-6 col-md-offset-2">
      <div class="form-group">
         
             <a  class="btn btn-block btn-primary" ng-click="proceed()">
-            Next Section <span class="glyphicon glyphicon-circle-arrow-right"></span>
+            Continue <span class="glyphicon glyphicon-circle-arrow-right"></span>
             </a>
       
         </div>

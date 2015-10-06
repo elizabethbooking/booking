@@ -37,7 +37,8 @@ files = {
   ],
   app_lib_css   : [
     'bower_components/angular/angular-csp.css',
-    'app/css/bootstrap/bootstrap.css'
+    'app/css/bootstrap/bootstrap.css',
+    'app/css/custom2.css'
   ],
   admin_lib_css   : [
     'bower_components/angular/angular-csp.css',
@@ -46,7 +47,7 @@ files = {
     'app/css/compiled/*.css'
   ],
   app_css : [
-    'app/css/custom.css'
+    'app/css/custom2.css'
   ],
 
   app_less  : [
@@ -145,5 +146,5 @@ gulp.task('watch', function(){
 });
 
 gulp.task('dev', ['libs', 'app', 'admin', 'app_css','app_lib_css', 'admin_lib_css', 'app_less', 'admin_less', 'server', 'browser-sync', 'watch']);
-gulp.task('prod', ['libs', 'app', 'admin','app_css', 'app_lib_css', 'admin_lib_css', 'app_less', 'admin_less', 'css', 'server']);
+gulp.task('prod', ['libs', 'app', 'admin','app_css' ,'app_lib_css', 'admin_lib_css', 'app_less', 'admin_less', 'css', 'server']);
 

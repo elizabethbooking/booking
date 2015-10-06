@@ -4,160 +4,33 @@
   <base href="/">
   <title>Hotel Eden Booking</title>
   <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no" />
-  <link rel="stylesheet" href="/css/app_lib.css">
-  <link rel="stylesheet" href="/css/app.css">
+
+    <link rel="stylesheet" href="/css/app_lib.css">
+   <link rel="stylesheet" href="/css/custom.css">
+
   <script type="text/javascript" src="/js/libs.js"></script>
   <script type="text/javascript" src="/js/app.js"></script>
 
-   <style>
-
-.nav-wizard > li {
-  float: left;
-}
-.nav-wizard > li > a {
-  position: relative;
-  background-color: #eeeeee;
-}
-.nav-wizard > li > a .badge {
-  margin-left: 3px;
-  color: #eeeeee;
-  background-color: #428bca;
-}
-.nav-wizard > li:not(:first-child) > a {
-  padding-left: 34px;
-}
-.nav-wizard > li:not(:first-child) > a:before {
-  width: 0px;
-  height: 0px;
-  border-top: 20px inset transparent;
-  border-bottom: 20px inset transparent;
-  border-left: 20px solid #ffffff;
-  position: absolute;
-  content: "";
-  top: 0;
-  left: 0;
-}
-.nav-wizard > li:not(:last-child) > a {
-  margin-right: 6px;
-}
-.nav-wizard > li:not(:last-child) > a:after {
-  width: 0px;
-  height: 0px;
-  border-top: 20px inset transparent;
-  border-bottom: 20px inset transparent;
-  border-left: 20px solid #eeeeee;
-  position: absolute;
-  content: "";
-  top: 0;
-  right: -20px;
-  z-index: 2;
-}
-.nav-wizard > li:first-child > a {
-  border-top-left-radius: 4px;
-  border-bottom-left-radius: 4px;
-}
-.nav-wizard > li:last-child > a {
-  border-top-right-radius: 4px;
-  border-bottom-right-radius: 4px;
-}
-.nav-wizard > li.done:hover > a,
-.nav-wizard > li:hover > a {
-  background-color: #d5d5d5;
-}
-.nav-wizard > li.done:hover > a:before,
-.nav-wizard > li:hover > a:before {
-  border-right-color: #d5d5d5;
-}
-.nav-wizard > li.done:hover > a:after,
-.nav-wizard > li:hover > a:after {
-  border-left-color: #d5d5d5;
-}
-.nav-wizard > li.done > a {
-  background-color: #e2e2e2;
-}
-.nav-wizard > li.done > a:before {
-  border-right-color: #e2e2e2;
-}
-.nav-wizard > li.done > a:after {
-  border-left-color: #e2e2e2;
-}
-.nav-wizard > li.active > a,
-.nav-wizard > li.active > a:hover,
-.nav-wizard > li.active > a:focus {
-  color: #ffffff;
-  background-color: #428bca;
-}
-.nav-wizard > li.active > a:after {
-  border-left-color: #428bca;
-}
-.nav-wizard > li.active > a .badge {
-  color: #428bca;
-  background-color: #ffffff;
-}
-.nav-wizard > li.disabled > a {
-  color: #777777;
-}
-.nav-wizard > li.disabled > a:hover,
-.nav-wizard > li.disabled > a:focus {
-  color: #777777;
-  text-decoration: none;
-  background-color: #eeeeee;
-  cursor: default;
-}
-.nav-wizard > li.disabled > a:before {
-  border-right-color: #eeeeee;
-}
-.nav-wizard > li.disabled > a:after {
-  border-left-color: #eeeeee;
-}
-.nav-wizard.nav-justified > li {
-  float: none;
-}
-.nav-wizard.nav-justified > li > a {
-  padding: 10px 15px;
-}
-
-
-
-#scrollArea {
-  height: 280px;
-  overflow: auto;
-}
-
-#top {
-  display: block;
-  margin-top: 5px;
-}
-header {
-    height: 75px;
-    width: 100%;
-    top: 0px;
-    position: relative;
-    left: 10%;
-    background: #FFF none repeat scroll 0% 0%;
-}
-.container-fluid {
-    margin-top: 15px;
-}
-
-@media (max-width: 768px) {
-  .nav-wizard.nav-justified > li > a {
-    border-radius: 4px;
-    margin-right: 0;
-  }
-  .nav-wizard.nav-justified > li > a:before,
-  .nav-wizard.nav-justified > li > a:after {
-    border: none !important;
-  }
-}
-</style>
+   
 
 
 </head>
 <body>
 
-  <header>
-         <hgroup id="site-logo" >
+  <body class="home page page-id-5 page-template-default no-sidebar-template" cz-shortcut-listen="true">
+  
+  <div class="wrapper">
+        <header id="branding">
+        
+  <div class="container clearfix">
+    <div class="hgroup-wrap clearfix">
+                <section class="hgroup-right">
+            
+      <div class="social-profiles clearfix">
+        <ul>
+      </ul>
+      </div><!-- .social-profiles -->                     </section><!-- .hgroup-right -->  
+              <hgroup id="site-logo" class="clearfix">
                         <h1 id="site-title"> 
                 <a href="./Hotel Eden files/Hotel Eden.html" title="Hotel Oloffson" rel="home">
                   <img src="img/HotelEdenHeader.jpg" alt="Hotel Oloffson">
@@ -165,30 +38,60 @@ header {
               </h1>
                       
         </hgroup><!-- #site-logo -->
-  </header>
+      
+    </div><!-- .hgroup-wrap -->
+  </div><!-- .container --> 
+    
+<nav id="access" class="clearfix">
+<div class="container clearfix">
+    <ul  >
+        <li  ui-sref-active="active" ><a  ui-sref="home" disabled="disabled"> Step 1 : Availability </a></li>
+        <li ui-sref-active="active" ><a ui-sref="guestinfo" disabled="disabled"> Step 2 : Input Information</a></li>
+        <li ui-sref-active="active" ><a  ui-sref="Confirmation" disabled="disabled"> Step 3 : Confirm Reservation</a>   </li>
+    </ul>
 
+</div><!-- .container -->
+</nav><!-- #access -->    
+    
+    <!-- .featured-slider -->   </header>
+    
+        <div id="main" >
 
-  <main class="container-fluid">
+  
+
+<div id="content">  
+  <div class ="row">
+    <div class="col-md-3 ex1">
+       <query></query>
+    </div>
+      <div class="col-md-9 ex2">
+       <div ui-view></div>
+    </div>
+      
+
+  </div>     
+</div><!-- #content -->
      
-  <div class="row" id="top">
-   <div class="col-md-12">
-      <ul class="nav nav-wizard">
-       <li ui-sref-active="active" ><a  ui-sref="home">Availability</a></li>
-       <li ui-sref-active="active"><a  ui-sref="booking">Bookings </a></li>
-       <li ui-sref-active="active"> <a ui-sref="guestinfo">Guest Information</a></li>
-       <li ui-sref-active="active"> <a  ui-sref="payment">Payment</a></li>
-       <li ui-sref-active="active"> <a  ui-sref="Confirmation"> Confirmation</a></li>
-      </ul>
-   </div>
+      
+     
 
-  </div>
+      
 
 
-    <div ui-view></div>
+ <div id="row">
+        <div class="container">
+      <div class="social-profiles clearfix">
+        
+      </div>
+      </div><!-- .container -->
+      </div><!-- #site-generator -->
+  </footer>
+</div><!-- .wrapper -->
 
 
-  </main>
-  <footer></footer>
+</body>
+
+
 
 </body>
 </html>

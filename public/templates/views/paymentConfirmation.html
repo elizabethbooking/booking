@@ -1,6 +1,6 @@
 
 <div class ="row">
-  <div class ="col-md-6 col-sm-6 ">
+  <div class ="col-md-6 col-xs-6 ">
 	<div class="text-center">
 	    <legend>Your Basic Information</legend>
 	        <p> Names  :{{ guestinfo.names.firstname }} {{ guestinfo.names.lasttname }} </p>
@@ -10,7 +10,7 @@
 	   
 	</div>
 	</div>
-	<div class ="col-md-6 col-sm-6 ">
+	<div class ="col-md-6 col-xs-6 ">
 
 	 <legend>Your Card Information</legend>
 	        <p> Card names : {{  cardinfo.card.cardholdername }} </p>
@@ -21,7 +21,7 @@
 </div>
 
 <div class ="row">
-  <div class ="col-md-6 col-sm-6 ">
+  <div class ="col-md-6 col-xs-6 ">
 	<div class="text-center">
 	    <legend>Booked Rooms</legend>
             <div ng-repeat="booking in bookinginfo">
@@ -33,7 +33,7 @@
 	   
 	</div>
 	</div>
-	<div class ="col-md-6 col-sm-6 ">
+	<div class ="col-md-6 col-xs-6 ">
 
 	 <legend>Guest Summary</legend>
 	       
@@ -49,7 +49,7 @@
 </div>
 
 
- <div class ="col-md-6 col-md-offset-2">
+ <div class ="col-xs-12">
      <div class="form-group">
         
             <button type="submit"  class="btn btn-block btn-success"  ng-click="processForm()" >
