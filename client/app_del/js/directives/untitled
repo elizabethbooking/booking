@@ -1,0 +1,6 @@
+Booking.directive('main', [function(){
+  return {
+    restrict    : 'E',
+    templateUrl : '/templates/main.html'
+  };
+}]);

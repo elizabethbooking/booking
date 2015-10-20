@@ -16,51 +16,69 @@ reload      = browserSync.reload;
 
 files = {
   libs  : [
-    'bower_components/angular/angular.js',
-    'bower_components/angular-cookies/angular-cookies.js',
-    'bower_components/angular-ui-router/release/angular-ui-router.js',
-    'bower_components/moment/moment.js',
-    'bower_components/underscore/underscore.js',
-    'bower_components/pagination/pagination.js'
+    'client/bower_components/jquery/dist/jquery.js',
+    'client/bower_components/angular/angular.js',
+    'client/bower_components/angular-route/angular-route.js',
+    'client/bower_components/angular-ui-router/release/angular-ui-router.js',
+    'client/bower_components/moment/moment.js',
+    'client/bower_components/underscore/underscore.js',
+    'client/bower_components/pagination/pagination.js',   
+    'client/bower_components/bootstrap/dist/js/bootstrap.js'
       ],
+   login:[
+
+      'client/app/js/modules/login.js',
+      'client/app/js/factories/login.js',
+      'client/app/js/directives/login.js',
+      'client/app/js/controllers/login.js'
+   
+   ] ,  
   app   : [
-    'app/js/modules/app.js',
-    'app/js/factories/**/*.js',
-    'app/js/directives/**/*.js',
-    'app/js/controllers/**/*.js'
+    'client/app/js/modules/app.js',
+    'client/app/js/factories/**/*.js',
+    'client/app/js/directives/**/*.js',
+    'client/app/js/controllers/**/*.js'
   ],
   admin : [
-    'app/js/modules/admin.js',
-    'app/js/factories/**/*.js',
-    'app/js/directives/**/*.js',
-    'app/js/controllers/**/*.js'
+    'client/app/js/modules/admin.js',
+    'client/app/js/factories/**/*.js',
+    'client/app/js/directives/**/*.js',
+    'client/app/js/controllers/**/*.js'
   ],
   app_lib_css   : [
-    'bower_components/angular/angular-csp.css',
-    'app/css/bootstrap/bootstrap.css',
-    'app/css/custom2.css'
+    'client/bower_components/angular/angular-csp.css',
+    'client/app/css/bootstrap/bootstrap.css'
   ],
   admin_lib_css   : [
-    'bower_components/angular/angular-csp.css',
-    'app/css/bootstrap/bootstrap.css',
-    'app/css/libs/**/*.css',
-    'app/css/compiled/*.css'
+    'client/bower_components/angular/angular-csp.css',
+    'client/app/css/bootstrap/bootstrap.css',
+    'client/app/css/libs/**/*.css',
+    'client/app/css/compiled/*.css'
   ],
   app_css : [
-    'app/css/custom2.css'
+    'client/app/css/custom2.css'
   ],
 
   app_less  : [
-    'app/less/app.less',
-    'app/less/component/**/*.less',
-    'app/less/app/**/*.less'
+    'client/app/less/app.less',
+    'client/app/less/component/**/*.less',
+    'client/app/less/app/**/*.less'
   ],
   admin_less: [
-    'app/less/admin.less',
-    'app/less/component/**/*.less',
-    'app/less/admin/**/*.less'
+    'client/app/less/admin.less',
+    'client/app/less/component/**/*.less',
+    'client/app/less/admin/**/*.less'
   ]
 };
+
+gulp.task('login', function(){
+  return gulp.src(files.login)
+    .pipe(sourcemaps.init())
+    .pipe(uglify())
+    .pipe(concat('login.js'))
+    .pipe(sourcemaps.write())
+    .pipe(gulp.dest('client/public/js'))
+});
 
 gulp.task('libs', function(){
   return gulp.src(files.libs)
@@ -68,7 +86,7 @@ gulp.task('libs', function(){
     .pipe(uglify())
     .pipe(concat('libs.js'))
     .pipe(sourcemaps.write())
-    .pipe(gulp.dest('public/js'))
+    .pipe(gulp.dest('client/public/js'))
 });
 
 gulp.task('app', function(){
@@ -77,7 +95,7 @@ gulp.task('app', function(){
     .pipe(uglify())
     .pipe(concat('app.js'))
     .pipe(sourcemaps.write())
-    .pipe(gulp.dest('public/js'))
+    .pipe(gulp.dest('client/public/js'))
 });
 
 gulp.task('admin', function(){
@@ -86,41 +104,41 @@ gulp.task('admin', function(){
     .pipe(uglify())
     .pipe(concat('admin.js'))
     .pipe(sourcemaps.write())
-    .pipe(gulp.dest('public/js'))
+    .pipe(gulp.dest('client/public/js'))
 });
 
 gulp.task('app_lib_css', function(){
   return gulp.src(files.app_lib_css)
     .pipe(concat('app_lib.css'))
     .pipe(minifyCss())
-    .pipe(gulp.dest('public/css'))
+    .pipe(gulp.dest('client/public/css'))
 });
 
 gulp.task('admin_lib_css', function(){
   return gulp.src(files.admin_lib_css)
     .pipe(concat('admin_lib.css'))
     .pipe(minifyCss())
-    .pipe(gulp.dest('public/css'))
+    .pipe(gulp.dest('client/public/css'))
 });
 gulp.task('app_css', function(){
   return gulp.src(files.app_css)
     .pipe(concat('custom.css'))
     .pipe(minifyCss())
-    .pipe(gulp.dest('public/css'))
+    .pipe(gulp.dest('client/public/css'))
 });
 
 gulp.task('app_less', function(){
   return  gulp.src(files.app_less)
     .pipe(less())
     .pipe(minifyCss())
-    .pipe(gulp.dest('public/css'))
+    .pipe(gulp.dest('client/public/css'))
 });
 
 gulp.task('admin_less', function(){
   return  gulp.src(files.admin_less)
     .pipe(less())
     .pipe(minifyCss())
-    .pipe(gulp.dest('public/css'))
+    .pipe(gulp.dest('client/public/css'))
 });
 
 gulp.task('browser-sync', function(){
@@ -140,11 +158,11 @@ gulp.task('server', function(){
 
 gulp.task('watch', function(){
   gulp.watch(
-    [files.app, files.admin, files.app_less, files.admin_less,files.app_css, 'public/index.html', 'public/admin.html', 'public/templates/**/*'],
-    ['app', 'admin', 'app_less', 'admin_less', reload]
+    [files.login,files.app, files.admin, files.app_less, files.admin_less,files.app_css , 'client/public/login.html','client/public/index.html', 'client/public/admin.html', 'client/public/templates/**/*'],
+    ['login','app', 'admin', 'app_less', 'admin_less', reload]
   );
 });
 
-gulp.task('dev', ['libs', 'app', 'admin', 'app_css','app_lib_css', 'admin_lib_css', 'app_less', 'admin_less', 'server', 'browser-sync', 'watch']);
-gulp.task('prod', ['libs', 'app', 'admin','app_css' ,'app_lib_css', 'admin_lib_css', 'app_less', 'admin_less', 'css', 'server']);
+gulp.task('dev', ['login','libs', 'app', 'admin', 'app_css','app_lib_css', 'admin_lib_css', 'app_less', 'admin_less', 'server', 'browser-sync', 'watch']);
+gulp.task('prod', ['login','libs', 'app', 'admin','app_css' ,'app_lib_css', 'admin_lib_css', 'app_less', 'admin_less', 'css', 'server']);
 
