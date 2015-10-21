@@ -16,7 +16,20 @@ Booking.factory('ReservationService', ['$http', function($http){
        reservation.pendingReservations=function(){
            return  $http.get('/admin/PendingReservations');
        }
+       reservation.confirmReservation=function(data){
+           return  $http.post('/admin/Confirmreservation',data);
+       }
+       reservation.confirmCheckin=function(data){
+           return  $http.post('/admin/Confirmcheckin',data);
+       }
+       reservation.Todaycheckins=function(){
+           return  $http.get('/admin/todayCheckins');
+       }
+        reservation.Todaycheckouts=function(){
+           return  $http.get('/admin/todayCheckOuts');
+       }
 
+       
 
      return reservation;
 

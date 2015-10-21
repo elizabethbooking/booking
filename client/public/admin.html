@@ -24,6 +24,42 @@
   <footer>
     <footer-nav></footer-nav>
   </footer>
-  </body>
+</body>
 </html>
+
+
+<script type="text/ng-template" id="customertmpl">
+ <div class="ngdialog-message">
+  <h3>Reservation Details</h3>
+  <p>Reservation ID : {{ cust._id }}</p>
+  <p>Start Date : {{cust.start.date | date:'MM/dd/yyyy'}}</p>
+  <p>Customer Names : {{cust.name.first}} {{cust.name.last}}</p>
+  <p>Email : {{cust.email}}</p>
+  <p>Telephone : {{cust.telephone}}</p>
+
+
+
+  <div class="ngdialog-buttons">
+    <button type="button" class="ngdialog-button ngdialog-button-warning" ng-click="confirm('ok')">Confirm</button>
+
+  </div>
+</script>
+
+
+<script type="text/ng-template" id="checkinmpl">
+ <div class="ngdialog-message">
+  <h3>Client Reservation Details</h3>
+  <p>Reservation ID : {{ client._id }}</p>
+  <p>Start Date : {{client.start.date | date:'MM/dd/yyyy'}}</p>
+  <p>Customer Names : {{client.name.first}} {{client.name.last}}</p>
+  <p>Email : {{client.email}}</p>
+  <p>Telephone : {{client.telephone}}</p>
+
+  
+  
+  <div class="ngdialog-buttons">
+    <button type="button" class="ngdialog-button ngdialog-button-primary" ng-click="confirm('ok')">Checkin</button>
+    
+  </div>
+</script>
 

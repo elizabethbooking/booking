@@ -25,7 +25,7 @@
             <div class="main-box infographic-box">
               <i class="fa fa-eye yellow"></i>
               <span class="headline">Guests Arriving</span>
-              <span class="value">4</span>
+              <span class="value">{{Todaycheckins.length}}</span>
             </div>
   </div>
 </div>
@@ -64,9 +64,9 @@
 
           <tr dir-paginate="customer in pendingConfirmation | filter :name.first | orderBy:'email' | itemsPerPage:5 " >
            
-              <td><a href="#">#{{customer._id}}</a></td>
+              <td><a  ng-click="viewdetails(customer)">#{{customer._id}}</a></td>
               <td>{{customer.start.date | date:'MM/dd/yyyy'}}</td>
-              <td><a href="#">{{customer.name.first}} {{customer.name.last}}</a></td>
+              <td><a ng-click="viewdetails(customer)">{{customer.name.first}} {{customer.name.last}}</a></td>
               <td class="text-center"><span class="label label-success">{{customer.status}}</span></td>
               <td class="text-right">&dollar; {{customer.price}}</td>
               <td class="text-center" style="width: 15%;">
@@ -77,6 +77,7 @@
                   </span>
                 </a>
               </td>
+
             </tr>
            
           </tbody>
@@ -154,53 +155,32 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <tr>
-                    <td><a href="#">#8002</a></td>
-                    <td>Superior Double</td>
-                    <td><a href="#">Robert De Niro</a></td>
-                    <td class="text-center"><span class="label label-success">Confirmed</span></td>
-                    <td class="text-right">&dollar; 825.50</td>
-                  </tr>
-                  <tr>
-                    <td><a href="#">#5832</a></td>
-                    <td>Suite</td>
-                    <td><a href="#">John Wayne</a></td>
-                    <td class="text-center"><span class="label label-success">Confirmed</span></td>
-                    <td class="text-right">&dollar; 923.93</td>
-                  </tr>
-                  <tr>
-                    <td><a href="#">#2547</a></td>
-                    <td>Junior Suite</td>
-                    <td><a href="#">Anthony Hopkins</a></td>
-                    <td class="text-center"><span class="label label-success">Confirmed</span></td>
-                    <td class="text-right">&dollar; 1.625.50</td>
-                  </tr>
-                  <tr>
-                    <td><a href="#">#9274</a></td>
-                    <td>Delux Double</td>
-                    <td><a href="#">Charles Chaplin</a></td>
-                    <td class="text-center"><span class="label label-danger">Cancelled</span></td>
-                    <td class="text-right">&dollar; 35.34</td>
-                  </tr>
-                  <tr>
-                    <td><a href="#">#8463</a></td>
-                    <td>Superior Double</td>
-                    <td><a href="#">Gary Cooper</a></td>
-                    <td class="text-center"><span class="label label-success">Confirmed</span></td>
-                    <td class="text-right">&dollar; 199.99</td>
-                  </tr>
+
+
+                      <tr dir-paginate="client in Todaycheckins | orderBy:'email' | itemsPerPage:5 " >
+
+
+                               <td><a ng-click="checkin(client)">#{{client._id}}</a></td>
+                              <td>{{client.rooms}}</td>
+                              <td><a ng-click="checkin(client)">{{client.name.first}} {{client.name.last}}</a></td>
+                              <td class="text-center"><span class="label label-success">{{client.status}}</span></td>
+                              <td class="text-right">&dollar; {{client.price}}</td>
+                                   
+                            
+
+                          </tr>
+                         
+                        </tbody>
+                      </table>
+                    </div>
+
+                     <dir-pagination-controls   max-size="5"  direction-links="true"  boundary-links="true" class="pull-right">  </dir-pagination-controls>
+
+                  
                 </tbody>
               </table>
             </div>
-            <ul class="pagination pull-right">
-              <li><a href="#"><i class="fa fa-chevron-left"></i></a></li>
-              <li><a href="#">1</a></li>
-              <li><a href="#">2</a></li>
-              <li><a href="#">3</a></li>
-              <li><a href="#">4</a></li>
-              <li><a href="#">5</a></li>
-              <li><a href="#"><i class="fa fa-chevron-right"></i></a></li>
-            </ul>
+           
           </div>
         </div>
       </div>
@@ -230,46 +210,32 @@
                     </tr>
                   </thead>
                   <tbody>
-                    <tr>
-                      <td>399945</td>
+
+
+                         <tr dir-paginate="checkouts in Todaycheckouts | orderBy:'email' | itemsPerPage:5 " >
+
+
+                          <td># {{checkouts._id}}</td>
                       <td class="text-center">&dollar; 245</td>
-                      <td class="text-center">Preston Stewart</td>
-                      <td class="text-center"><span class="label label-warning">Pending</span></td>
-                      <td class="text-center">205</td>
-                    </tr>
-                    <tr>
-                      <td>453345</td>
-                      <td class="text-center">&dollar; 0</td>
-                      <td class="text-center">Smith Jones</td>
-                      <td class="text-center"><span class="label label-success">Complete</span></td>
-                      <td class="text-center">102</td>
-                    </tr>
-                    <tr>
-                      <td>453345</td>
-                      <td class="text-center">&dollar; 0</td>
-                      <td class="text-center">Smith Jones</td>
-                      <td class="text-center"><span class="label label-success">Complete</span></td>
-                      <td class="text-center">102</td>
-                    </tr>
-                    <tr>
-                      <td>453345</td>
-                      <td class="text-center">&dollar; 0</td>
-                      <td class="text-center">Smith Jones</td>
-                      <td class="text-center"><span class="label label-success">Complete</span></td>
-                      <td class="text-center">102</td>
-                    </tr>
+                      <td class="text-center">{{checkouts.name.first}} {{checkouts.name.las</td>
+                      <td class="text-center"><span class="label label-warning">{{checkouts.status}}</span></td>
+                      <td class="text-center">{{checkouts.room}}</td>
+                                   
+                            
+
+                          </tr>
+                         
+                        </tbody>
+                      </table>
+                    </div>
+
+                     <dir-pagination-controls   max-size="5"  direction-links="true"  boundary-links="true" class="pull-right">  </dir-pagination-controls>
+
+                   
                   </tbody>
                 </table>
               </div>
-              <ul class="pagination pull-right">
-                <li><a href="#"><i class="fa fa-chevron-left"></i></a></li>
-                <li><a href="#">1</a></li>
-                <li><a href="#">2</a></li>
-                <li><a href="#">3</a></li>
-                <li><a href="#">4</a></li>
-                <li><a href="#">5</a></li>
-                <li><a href="#"><i class="fa fa-chevron-right"></i></a></li>
-              </ul>
+             
             </div>
           </div>
         </div>

@@ -23,7 +23,9 @@ files = {
     'client/bower_components/moment/moment.js',
     'client/bower_components/underscore/underscore.js',
     'client/bower_components/pagination/pagination.js',   
-    'client/bower_components/bootstrap/dist/js/bootstrap.js'
+    'client/bower_components/bootstrap/dist/js/bootstrap.js',
+    'client/bower_components/dialog/ngDialog.min.js'
+   
       ],
    login:[
 
@@ -53,7 +55,9 @@ files = {
     'client/bower_components/angular/angular-csp.css',
     'client/app/css/bootstrap/bootstrap.css',
     'client/app/css/libs/**/*.css',
-    'client/app/css/compiled/*.css'
+    'client/app/css/compiled/*.css',
+    'client/bower_components/dialog/css/ngDialog.min.css',
+    'client/bower_components/dialog/css/ngDialog-theme-default.css'
   ],
   app_css : [
     'client/app/css/custom2.css'

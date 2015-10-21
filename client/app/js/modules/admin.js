@@ -1,6 +1,6 @@
 var Booking;
 
-Booking = angular.module('Booking', ['ngRoute','angularUtils.directives.dirPagination']);
+Booking = angular.module('Booking', ['ngRoute','angularUtils.directives.dirPagination','ngDialog']);
 
 Booking.factory('authInterceptor',['$rootScope', '$q', '$window', function ($rootScope, $q, $window) {
       return {

@@ -26,11 +26,33 @@ var express = require('express')
 			}
 
   
-    
+      router.post('/Confirmreservation', function(req, res){
+          db.UpdateReservation(req,function(status,resp){
+              if(status){
+                   res.status(500).json({"Error": resp})
+              }else{
+              	res.status(200).json({"sucess": "ok"})
+              }
 
-       router.get('/test', function(req, res){
-          res.json({"token" : "helooooo" });	
-      }); 
+          });
+      	
+      });
+
+
+      router.post('/Confirmcheckin', function(req, res){
+          db.UpdateToCheckin(req,function(status,resp){
+              if(status){
+                   res.status(500).json({"Error": resp})
+              }else{
+              	res.status(200).json({"sucess": "ok"})
+              }
+
+          });
+      	
+      });
+
+
+
 
      router.get('/', function(req, res){
          res.redirect('/admin.html');
@@ -44,7 +66,26 @@ var express = require('express')
           	});
       });     
       
+   router.get('/', function(req, res){
+         res.redirect('/admin.html');
+      }); 
 
+		   router.get('/todayCheckins', function(req, res){
+		           db.TodayCheckin(req,function(status,checkins){
+		                     if(status){res.status(404).json({error: "Server Error"});}
+		                     else {res.status(200).json({result: checkins})}	
+
+		          	});
+		      }); 
+
+
+		   router.get('/todayCheckOuts', function(req, res){
+		           db.TodayCheckOut(req,function(status,checkouts){
+		                     if(status){res.status(404).json({error: "Server Error"});}
+		                     else {res.status(200).json({result: checkouts})}	
+
+		          	});
+		      }); 
 
 
 module.exports = router
