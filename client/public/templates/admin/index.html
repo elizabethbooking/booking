@@ -18,7 +18,7 @@
             <div class="main-box infographic-box">
               <i class="fa fa-money green"></i>
               <span class="headline">Pending Confirm</span>
-              <span class="value">3</span>
+              <span class="value">{{pendingConfirmation.length}}</span>
             </div>
   </div>
   <div class="col-lg-3 col-sm-6 col-xs-12">
@@ -38,7 +38,7 @@
                 
         <div class="filter-block pull-right">
           <div class="form-group pull-left">
-            <input type="text" class="form-control" placeholder="Search...">
+            <input type="text" class="form-control" placeholder="Search..." ng-model="name.first">
             <i class="fa fa-search search-icon"></i>
           </div>
                   
@@ -61,12 +61,14 @@
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td><a href="#">#8002</a></td>
-              <td>2013/08/08</td>
-              <td><a href="#">Robert De Niro</a></td>
-              <td class="text-center"><span class="label label-success">Confirmed</span></td>
-              <td class="text-right">&dollar; 700.50</td>
+
+          <tr dir-paginate="customer in pendingConfirmation | filter :name.first | orderBy:'email' | itemsPerPage:5 " >
+           
+              <td><a href="#">#{{customer._id}}</a></td>
+              <td>{{customer.start.date | date:'MM/dd/yyyy'}}</td>
+              <td><a href="#">{{customer.name.first}} {{customer.name.last}}</a></td>
+              <td class="text-center"><span class="label label-success">{{customer.status}}</span></td>
+              <td class="text-right">&dollar; {{customer.price}}</td>
               <td class="text-center" style="width: 15%;">
                 <a href="#" class="table-link">
                   <span class="fa-stack">
@@ -76,78 +78,14 @@
                 </a>
               </td>
             </tr>
-            <tr>
-              <td><a href="#">#5832</a></td>
-              <td>2013/08/08</td>
-              <td><a href="#">John Wayne</a></td>
-              <td class="text-center"><span class="label label-warning">Credit Card Pending</span></td>
-              <td class="text-right">&dollar; 400.93</td>
-              <td class="text-center" style="width: 15%;">
-                <a href="#" class="table-link">
-                  <span class="fa-stack">
-                    <i class="fa fa-square fa-stack-2x"></i>
-                    <i class="fa fa-search-plus fa-stack-1x fa-inverse"></i>
-                  </span>
-                </a>
-              </td>
-            </tr>
-            <tr>
-              <td><a href="#">#2547</a></td>
-              <td>2013/08/08</td>
-              <td><a href="#">Anthony Hopkins</a></td>
-              <td class="text-center"><span class="label label-info">Telephone Confirmation Pending</span></td>
-              <td class="text-right">&dollar; 500.50</td>
-              <td class="text-center" style="width: 15%;">
-                <a href="#" class="table-link">
-                  <span class="fa-stack">
-                    <i class="fa fa-square fa-stack-2x"></i>
-                    <i class="fa fa-search-plus fa-stack-1x fa-inverse"></i>
-                  </span>
-                </a>
-              </td>
-            </tr>
-            <tr>
-              <td><a href="#">#9274</a></td>
-              <td>2013/08/08</td>
-              <td><a href="#">Charles Chaplin</a></td>
-              <td class="text-center"><span class="label label-danger">Cancelled</span></td>
-              <td class="text-right">&dollar; 300.34</td>
-              <td class="text-center" style="width: 15%;">
-                <a href="#" class="table-link">
-                  <span class="fa-stack">
-                    <i class="fa fa-square fa-stack-2x"></i>
-                    <i class="fa fa-search-plus fa-stack-1x fa-inverse"></i>
-                  </span>
-                </a>
-              </td>
-            </tr>
-            <tr>
-              <td><a href="#">#8463</a></td>
-              <td>2013/08/08</td>
-              <td><a href="#">Gary Cooper</a></td>
-              <td class="text-center"><span class="label label-success">Confirmed</span></td>
-              <td class="text-right">&dollar; 220.00</td>
-              <td class="text-center" style="width: 15%;">
-                <a href="#" class="table-link">
-                  <span class="fa-stack">
-                    <i class="fa fa-square fa-stack-2x"></i>
-                    <i class="fa fa-search-plus fa-stack-1x fa-inverse"></i>
-                  </span>
-                </a>
-              </td>
-            </tr>
+           
           </tbody>
         </table>
       </div>
-      <ul class="pagination pull-right">
-        <li><a href="#"><i class="fa fa-chevron-left"></i></a></li>
-        <li><a href="#">1</a></li>
-        <li class="active"><a href="#">2</a></li>
-        <li><a href="#">3</a></li>
-        <li><a href="#">4</a></li>
-        <li><a href="#">5</a></li>
-        <li><a href="#"><i class="fa fa-chevron-right"></i></a></li>
-      </ul>
+
+       <dir-pagination-controls   max-size="5"  direction-links="true"  boundary-links="true" class="pull-right">  </dir-pagination-controls>      
+
+     
     </div>
   </div>
 

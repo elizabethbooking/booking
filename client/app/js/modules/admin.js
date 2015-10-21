@@ -1,6 +1,6 @@
 var Booking;
 
-Booking = angular.module('Booking', ['ngRoute']);
+Booking = angular.module('Booking', ['ngRoute','angularUtils.directives.dirPagination']);
 
 Booking.factory('authInterceptor',['$rootScope', '$q', '$window', function ($rootScope, $q, $window) {
       return {
@@ -38,8 +38,8 @@ Booking.config(['$routeProvider', '$locationProvider','$httpProvider', function(
     .when('/', {
       templateUrl : '/templates/admin/index.html',
       controller  : 'HomeController'
-    })
-
+        })  
+    
     .when('/policies', {
       templateUrl : '/templates/views/policies.html',
       controller  : 'PoliciesController'
@@ -71,7 +71,7 @@ Booking.config(['$routeProvider', '$locationProvider','$httpProvider', function(
 
 Booking.run(['$rootScope', '$location',  function($rootScope, $location){
 
- 
+ $rootScope.loggedIn=true;
  
 /*
   $rootScope.$on("$routeChangeStart", function(event, next, current){

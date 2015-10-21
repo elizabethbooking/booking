@@ -13,6 +13,9 @@ Booking.factory('ReservationService', ['$http', function($http){
        reservation.create=function(data){
            return  $http.post('/api/reservation',data);
        }
+       reservation.pendingReservations=function(){
+           return  $http.get('/admin/PendingReservations');
+       }
 
 
      return reservation;

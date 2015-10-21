@@ -1,6 +1,6 @@
 var Booking;
 
-Booking = angular.module('Booking', ['ngCookies','ui.router','angularUtils.directives.dirPagination']);
+Booking = angular.module('Booking', ['ui.router','angularUtils.directives.dirPagination']);
 
 Booking.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider){
  

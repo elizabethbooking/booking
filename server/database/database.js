@@ -31,3 +31,18 @@ exports.getCredentials=function(username,pwd,fn){
   });
 
 };
+
+exports.pendingConfirmation=function(req,fn){
+
+   Model.reservation.find({ 'status': "Credit Card Pending" }, function(err, reservations){
+    if (err) { 
+        console.log(err);
+    	return fn(true,err);}
+    else {
+
+      return fn(false,reservations);
+    }
+
+  });
+
+};
