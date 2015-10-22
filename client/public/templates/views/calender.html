@@ -1,0 +1,45 @@
+
+<div class="row">
+<div class="col-md-12 well">
+
+                    <div class="col-md-4 ">
+                         <br/>
+                         <br/>
+                         <br/>
+                          <br/> 
+                           <br/>
+                        <div class="btn-group pull-right">
+                          <button type="button" class="btn btn-primary" ng-click="addEvent()">
+                            Add Event
+                          </button>
+                        </div>
+
+                        <ul class="list-group">
+                            <li class="list-group-item list-group-item-success" ng-repeat="e in events">
+                               
+                                    <a ng-click="remove($index)"><i class="glyphicon glyphicon-remove"></i></a>
+                                    <b> <input ng-model="e.title"></b> 
+                                    {{e.start | date:"MMM dd"}} - {{e.end | date:"MMM dd"}}
+                                
+                            </li>
+                        </ul>
+
+                    </div>
+
+                    <div class="col-md-8 ">
+                        <tabset>
+                    
+                           <tab select="renderCalender('myCalendar3');">
+                              <div class="btn-toolbar">
+                                <div class="btn-group">
+                                    <button class="btn btn-success" ng-click="changeView('agendaDay', 'myCalendar3')">AgendaDay</button>
+                                    <button class="btn btn-success" ng-click="changeView('agendaWeek', 'myCalendar3')">AgendaWeek</button>
+                                    <button class="btn btn-success" ng-click="changeView('month', 'myCalendar3')">Month</button>
+                                </div>
+                              </div>
+                            <div class="calendar" ng-model="eventSources2" calendar="myCalendar3" ui-calendar="uiConfig.calendar"></div>
+                           </tab>
+                        </tabset>
+                    </div>
+  </div>
+</div>

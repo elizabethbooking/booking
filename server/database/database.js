@@ -78,6 +78,42 @@ exports.UpdateToCheckin=function(req,fn){
 
 };
 
+exports.UpdateToCheckout=function(req,fn){
+    var query = { _id: req.body._id };
+   Model.reservation.update(query,{ $set: { 'status': "Checked OUT" }}, function(err, reservations){
+    if (err) { 
+        console.log(err);
+    	return fn(true,err);}
+    else {
+
+      return fn(false,reservations);
+    }
+
+  });
+
+};
+
+
+
+
+
+
+exports.GuestCheckedin=function(req,fn){
+    
+   Model.reservation.find({ 'status': "Checked IN" }, function(err, doc ){
+    if (err) { 
+        console.log(err);
+    	return fn(true,err);}
+    else {
+
+      return fn(false,doc);
+    }
+
+  });
+
+};
+
+
 
 
 exports.TodayCheckin=function(req,fn){

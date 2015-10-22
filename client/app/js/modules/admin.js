@@ -1,6 +1,6 @@
 var Booking;
 
-Booking = angular.module('Booking', ['ngRoute','angularUtils.directives.dirPagination','ngDialog']);
+Booking = angular.module('Booking', ['ngRoute','angularUtils.directives.dirPagination','ngDialog','ui.calendar']);
 
 Booking.factory('authInterceptor',['$rootScope', '$q', '$window', function ($rootScope, $q, $window) {
       return {
@@ -57,6 +57,12 @@ Booking.config(['$routeProvider', '$locationProvider','$httpProvider', function(
       templateUrl : '/templates/views/user_profile.html',
       controller  : 'UserProfileController'
     })
+
+   .when('/calender', {
+      templateUrl : '/templates/views/calender.html',
+      controller  : 'CalendarController'
+    })
+    
    
     .when('/logout', {
       templateUrl : 'templates/admin/logout.html',

@@ -1,4 +1,4 @@
-Booking.controller('HomeController', ['CompanyService','ReservationService','$scope','ngDialog', function(CompanyService,ReservationService,$scope,ngDialog){
+Booking.controller('HomeController', ['CompanyService','ReservationService','$scope','ngDialog','InventoryService', function(CompanyService,ReservationService,$scope,ngDialog,InventoryService){
   this.company = null;
   this.data = 'Booking Home';
   var _self = this;
@@ -6,6 +6,22 @@ Booking.controller('HomeController', ['CompanyService','ReservationService','$sc
   CompanyService.data(function(data){
     _self.company = data;
     console.log(data);
+
+              $scope.query = {
+			        adults: 1,
+			        childs: 0,
+			        check_in: new moment().toDate(),
+			        check_out: new moment().add(3, 'days').toDate()
+			      };
+
+			   
+			        InventoryService.query($scope.query, function(results){
+			          $scope.availability=results;
+			       
+			        });
+                 
+
+
   });
 
         ReservationService.pendingReservations()
@@ -37,7 +53,14 @@ Booking.controller('HomeController', ['CompanyService','ReservationService','$sc
 
 		     });
 
+          ReservationService.GuestCheckedin()
+            .success(function (data){ 
+                 	$scope.GuestCheckedin=data.result;
+			   })
+		   .error(function(data) {
+            	$scope.GuestCheckedin=[];
 
+		     });
 
 
 		 $scope.viewdetails =function(customer){
@@ -99,9 +122,41 @@ Booking.controller('HomeController', ['CompanyService','ReservationService','$sc
                   }, function (reason) {
                     
                 });
-      }       
+      }    
 
 
+       $scope.checkout =function(cusm){
+             $scope.checkout=cusm;
+                ngDialog.openConfirm({
+                    template: 'checkoutmpl',
+                    className: 'ngdialog-theme-default',
+                    scope: $scope
+                }).then(function (value) {
+
+                	ReservationService.confirmCheckout($scope.checkout)
+                	  .success(function (data){ 
+			                    ngDialog.open({
+		                            template: '<p>Client Reservation Updated to Checked-OUT </p>',
+		                            plain: true
+                                });  
+                            $scope.Todaycheckouts.splice($scope.Todaycheckouts.indexOf($scope.checkout),1);
+
+						   })
+					   .error(function(data) {
+					   	      ngDialog.open({
+	                            template: '<p>Error Updating Client Reservation Status</p>',
+	                            plain: true
+                                });
+
+					     });
+                    
+                  }, function (reason) {
+                    
+                });
+      }  ;     
+   
+
+   
 
 
 

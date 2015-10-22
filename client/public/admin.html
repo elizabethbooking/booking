@@ -63,3 +63,21 @@
   </div>
 </script>
 
+
+<script type="text/ng-template" id="checkoutmpl">
+ <div class="ngdialog-message">
+  <h3>Client Reservation Details</h3>
+  <p>Reservation ID : {{ checkout._id }}</p>
+  <p>Start Date : {{checkout.start.date | date:'MM/dd/yyyy'}}</p>
+  <p>Customer Names : {{checkout.name.first}} {{checkout.name.last}}</p>
+  <p>Email : {{checkout.email}}</p>
+  <p>Telephone : {{checkout.telephone}}</p>
+
+  
+  
+  <div class="ngdialog-buttons">
+    <button type="button" class="ngdialog-button ngdialog-button-primary" ng-click="confirm('ok')">Check-Out</button>
+    
+  </div>
+</script>
+

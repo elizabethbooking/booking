@@ -4,14 +4,14 @@
     <div class="main-box infographic-box">
               <i class="fa fa-user red"></i>
               <span class="headline">Guests Checked-In</span>
-              <span class="value">27</span>
+              <span class="value">{{GuestCheckedin.length}}</span>
     </div>
   </div>
   <div class="col-lg-3 col-sm-6 col-xs-12">
             <div class="main-box infographic-box">
               <i class="fa fa-shopping-cart emerald"></i>
               <span class="headline">Rooms Available</span>
-              <span class="value">12</span>
+              <span class="value">{{availability.length}}</span>
             </div>
   </div>
   <div class="col-lg-3 col-sm-6 col-xs-12">
@@ -62,7 +62,7 @@
           </thead>
           <tbody>
 
-          <tr dir-paginate="customer in pendingConfirmation | filter :name.first | orderBy:'email' | itemsPerPage:5 " >
+          <tr dir-paginate="customer in pendingConfirmation | filter :name.first | orderBy:'email' | itemsPerPage:5   "  pagination-id="cust">
            
               <td><a  ng-click="viewdetails(customer)">#{{customer._id}}</a></td>
               <td>{{customer.start.date | date:'MM/dd/yyyy'}}</td>
@@ -84,7 +84,7 @@
         </table>
       </div>
 
-       <dir-pagination-controls   max-size="5"  direction-links="true"  boundary-links="true" class="pull-right">  </dir-pagination-controls>      
+       <dir-pagination-controls   max-size="5"  direction-links="true"  boundary-links="true" class="pull-right" pagination-id="cust">  </dir-pagination-controls>      
 
      
     </div>
@@ -148,7 +148,7 @@
                 <thead>
                   <tr>
                     <th><a href="#"><span>Reservation #</span></a></th>
-                    <th><a href="#" class="desc"><span>Room Type</span></a></th>
+                    <th><a href="#" class="desc"><span>Room #</span></a></th>
                     <th><a href="#" class="asc"><span>Guest Name</span></a></th>
                     <th class="text-center"><span>Status</span></th>
                     <th class="text-right"><span>Price</span></th>
@@ -157,7 +157,7 @@
                 <tbody>
 
 
-                      <tr dir-paginate="client in Todaycheckins | orderBy:'email' | itemsPerPage:5 " >
+                      <tr dir-paginate="client in Todaycheckins | orderBy:'email' | itemsPerPage:5 " pagination-id="client">
 
 
                                <td><a ng-click="checkin(client)">#{{client._id}}</a></td>
@@ -174,7 +174,7 @@
                       </table>
                     </div>
 
-                     <dir-pagination-controls   max-size="5"  direction-links="true"  boundary-links="true" class="pull-right">  </dir-pagination-controls>
+                     <dir-pagination-controls   max-size="5"  direction-links="true"  boundary-links="true" class="pull-right" pagination-id="client">  </dir-pagination-controls>
 
                   
                 </tbody>
@@ -212,12 +212,12 @@
                   <tbody>
 
 
-                         <tr dir-paginate="checkouts in Todaycheckouts | orderBy:'email' | itemsPerPage:5 " >
+                         <tr dir-paginate="checkouts in Todaycheckouts | orderBy:'email' | itemsPerPage:5 "  pagination-id="cgouts" >
 
 
-                          <td># {{checkouts._id}}</td>
+                          <td><a ng-click="checkout(checkouts)"># {{checkouts._id}}</a></td>
                       <td class="text-center">&dollar; 245</td>
-                      <td class="text-center">{{checkouts.name.first}} {{checkouts.name.las</td>
+                      <td class="text-center">{{checkouts.name.first}} {{checkouts.name.last}}</td>
                       <td class="text-center"><span class="label label-warning">{{checkouts.status}}</span></td>
                       <td class="text-center">{{checkouts.room}}</td>
                                    
@@ -229,7 +229,7 @@
                       </table>
                     </div>
 
-                     <dir-pagination-controls   max-size="5"  direction-links="true"  boundary-links="true" class="pull-right">  </dir-pagination-controls>
+                     <dir-pagination-controls   max-size="5"  direction-links="true"  boundary-links="true" class="pull-right"  pagination-id="cgouts"  >  </dir-pagination-controls>
 
                    
                   </tbody>
@@ -246,6 +246,8 @@
       <div class="col-md-6">
         <div class="main-box">
           <div id="calendar"></div>
+
+            <a href="#/calender" class="btn btn-lg btn-error "> View Calender/Events </a>
         </div>
       </div>
           

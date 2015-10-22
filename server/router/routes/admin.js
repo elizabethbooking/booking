@@ -39,7 +39,19 @@ var express = require('express')
       });
 
 
-      router.post('/Confirmcheckin', function(req, res){
+      router.post('/confirmCheckout', function(req, res){
+          db.UpdateToCheckout(req,function(status,resp){
+              if(status){
+                   res.status(500).json({"Error": resp})
+              }else{
+              	res.status(200).json({"sucess": "ok"})
+              }
+
+          });
+      	
+      });
+
+    router.post('/Confirmcheckin', function(req, res){
           db.UpdateToCheckin(req,function(status,resp){
               if(status){
                    res.status(500).json({"Error": resp})
@@ -54,21 +66,18 @@ var express = require('express')
 
 
 
-     router.get('/', function(req, res){
-         res.redirect('/admin.html');
-      }); 
 
-       router.get('/PendingReservations', function(req, res){
-          db.pendingConfirmation(req,function(status,reservations){
-                     if(status){res.status(404).json({error: "Server Error"});}
-                     else {res.status(200).json({result: reservations})}	
+	       router.get('/PendingReservations', function(req, res){
+	          db.pendingConfirmation(req,function(status,reservations){
+	                     if(status){res.status(404).json({error: "Server Error"});}
+	                     else {res.status(200).json({result: reservations})}	
 
-          	});
-      });     
+	          	});
+	      });     
       
-   router.get('/', function(req, res){
-         res.redirect('/admin.html');
-      }); 
+		   router.get('/', function(req, res){
+		         res.redirect('/admin.html');
+		      }); 
 
 		   router.get('/todayCheckins', function(req, res){
 		           db.TodayCheckin(req,function(status,checkins){
@@ -86,6 +95,16 @@ var express = require('express')
 
 		          	});
 		      }); 
+
+          
+		   router.get('/GuestCheckedin', function(req, res){
+		           db.GuestCheckedin(req,function(status,guests){
+		                     if(status){res.status(404).json({error: "Server Error"});}
+		                     else {res.status(200).json({result: guests})}	
+
+		          	});
+		      });
+		   
 
 
 module.exports = router

@@ -24,8 +24,10 @@ files = {
     'client/bower_components/underscore/underscore.js',
     'client/bower_components/pagination/pagination.js',   
     'client/bower_components/bootstrap/dist/js/bootstrap.js',
-    'client/bower_components/dialog/ngDialog.min.js'
-   
+    'client/bower_components/dialog/ngDialog.min.js',
+    'client/bower_components/angular-ui-calendar/src/calendar.js',
+    'client/bower_components/fullcalendar/dist/fullcalendar.min.js',
+    'client/bower_components/fullcalendar/dist/gcal.js' 
       ],
    login:[
 
@@ -57,7 +59,8 @@ files = {
     'client/app/css/libs/**/*.css',
     'client/app/css/compiled/*.css',
     'client/bower_components/dialog/css/ngDialog.min.css',
-    'client/bower_components/dialog/css/ngDialog-theme-default.css'
+    'client/bower_components/dialog/css/ngDialog-theme-default.css',
+    'client/bower_components/fullcalendar/dist/fullcalendar.css'
   ],
   app_css : [
     'client/app/css/custom2.css'

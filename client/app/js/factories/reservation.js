@@ -22,13 +22,21 @@ Booking.factory('ReservationService', ['$http', function($http){
        reservation.confirmCheckin=function(data){
            return  $http.post('/admin/Confirmcheckin',data);
        }
+
+       reservation.confirmCheckout=function(data){
+           return  $http.post('/admin/confirmCheckout',data);
+       }
+       
        reservation.Todaycheckins=function(){
            return  $http.get('/admin/todayCheckins');
        }
         reservation.Todaycheckouts=function(){
            return  $http.get('/admin/todayCheckOuts');
        }
-
+       reservation.GuestCheckedin=function(){
+           return  $http.get('/Admin/GuestCheckedin');
+       }
+      
        
 
      return reservation;
