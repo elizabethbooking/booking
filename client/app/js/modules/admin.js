@@ -46,7 +46,7 @@ Booking.config(['$routeProvider', '$locationProvider','$httpProvider', function(
     })
     .when('/inventory', {
       templateUrl : '/templates/views/inventory.html',
-      controller  : 'InventoryController'
+      controller  : 'AdminInventoryController'
     })
     .when('/users', {
       templateUrl : '/templates/views/users.html',

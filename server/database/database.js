@@ -113,6 +113,50 @@ exports.GuestCheckedin=function(req,fn){
 
 };
 
+exports.Updaterooms=function(req,fn){
+
+	                var inventory =Model.inventory({
+					 		id:req.body.id,
+					 		company_id:req.body.company_id,
+					 		type:req.body.type,
+					 		title:req.body.title,
+					 		description:req.body.description,
+					 		category:req.body.category,
+					 		images:req.body.image.data,
+					 		status:req.body.status,
+					 		lastupdate:new Date(),
+					 		base_price:req.body.base_price
+                           });
+    
+                      inventory.save(function(err,inv){
+					 		if (err){console.log(err);fn(true,err);}
+					 		else {
+					 	
+					 			fn(false,inv);
+					 		}
+					 	});
+
+      
+  
+
+};
+
+exports.Getrooms=function(req,fn){
+    
+  Model.inventory.find({ 'company_id': req.params.company_id }, function(err, rooms){
+    if (err) { 
+        console.log(err);
+    	return fn(true,err);}
+    else {
+      return fn(null,rooms);
+    }
+
+  });
+  
+
+};
+
+
 
 
 

@@ -39,33 +39,51 @@ var express = require('express')
       });
 
 
-      router.post('/confirmCheckout', function(req, res){
-          db.UpdateToCheckout(req,function(status,resp){
-              if(status){
-                   res.status(500).json({"Error": resp})
-              }else{
-              	res.status(200).json({"sucess": "ok"})
-              }
+		      router.post('/confirmCheckout', function(req, res){
+		          db.UpdateToCheckout(req,function(status,resp){
+		              if(status){
+		                   res.status(500).json({"Error": resp})
+		              }else{
+		              	res.status(200).json({"sucess": "ok"})
+		              }
 
-          });
-      	
-      });
+		          });
+		      	
+		      });
 
-    router.post('/Confirmcheckin', function(req, res){
-          db.UpdateToCheckin(req,function(status,resp){
-              if(status){
-                   res.status(500).json({"Error": resp})
-              }else{
-              	res.status(200).json({"sucess": "ok"})
-              }
+		    router.post('/Confirmcheckin', function(req, res){
+		          db.UpdateToCheckin(req,function(status,resp){
+		              if(status){
+		                   res.status(500).json({"Error": resp})
+		              }else{
+		              	res.status(200).json({"sucess": "ok"})
+		              }
 
-          });
-      	
-      });
+		          });
+		      	
+		      });
+
+		    router.post('/room', function(req, res){
+		          db.Updaterooms(req,function(status,resp){
+		              if(status){
+		                   res.status(500).json({"Error": resp})
+		              }else{
+		              	res.status(200).json({"status": "success"})
+		              }
+
+		          });
+		      	
+		      });
 
 
+                
+           router.get('/rooms/:company_id', function(req, res){
+	          db.Getrooms(req,function(status,rooms){
+	                     if(status){res.status(404).json({error: "Server Error"});}
+	                     else {res.status(200).json({result: rooms})}	
 
-
+	          	});
+	         });  
 
 	       router.get('/PendingReservations', function(req, res){
 	          db.pendingConfirmation(req,function(status,reservations){

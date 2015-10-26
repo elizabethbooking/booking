@@ -5,9 +5,7 @@ Booking.controller('HomeController', ['CompanyService','ReservationService','$sc
 
   CompanyService.data(function(data){
     _self.company = data;
-    console.log(data);
-
-              $scope.query = {
+          $scope.query = {
 			        adults: 1,
 			        childs: 0,
 			        check_in: new moment().toDate(),

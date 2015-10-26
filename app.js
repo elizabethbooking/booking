@@ -7,7 +7,7 @@ var serveStatic = require('serve-static');
 
 app.use(serveStatic(__dirname + '/client/public'));
 app.use(bodyParser.urlencoded({ extended: false }));
-app.use(bodyParser.json());
+app.use(bodyParser.json({limit: '50mb'}));
 
 
 var router = require('./server/router')(app);

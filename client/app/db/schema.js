@@ -83,6 +83,7 @@ var inventorySchema = new Schema({
   category    : String,
   images      : [ String ],
   status      : String,
+  lastupdate  : Date,
   base_price  : Number
 }, {
 
