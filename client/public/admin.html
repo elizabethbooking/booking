@@ -81,6 +81,22 @@
   </div>
 </script>
 
+  <script type="text/ng-template" id="roomtmpl">
+ <div class="ngdialog-message">
+  <h3>Room Details ..</h3>
+  <hr/>
+  <p><img  data-ng-src="{{room.images[0]}}" alt="" err-SRC="img/na.jpg" class="img-responsive img-thumbnail" style="width:100px;height:100px"/></p>
+  <p>Room Number : {{ room.id }}</p>
+  <p>Room Type : {{room.type}}</p>
+  <p>Room Status : {{room.status}}</p>
+  <p>Room Last Update: {{room.lastupdate}}</p>
+  <p>Room Base Price : {{room.base_price}}</p>
+
+
+  
+
+</script>
+
 
 <script type="text/ng-template" id="addroomstmpl">
  <div class="ngdialog-message">

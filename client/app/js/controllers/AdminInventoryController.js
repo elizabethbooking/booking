@@ -12,7 +12,14 @@ Booking.controller('AdminInventoryController', ['$rootScope', 'InventoryService'
 			       
 			        });
 
-
+ $scope.viewroom=function(room){
+  $scope.room=room;
+                              ngDialog.open({
+                               template: 'roomtmpl',
+                               className: 'ngdialog-theme-default',
+                                scope: $scope,
+                                });
+ };
   $scope.addRoom=function(){
 
       	ngDialog.openConfirm({

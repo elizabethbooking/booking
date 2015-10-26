@@ -41,11 +41,11 @@
                                                   <td>
 											<img  data-ng-src="{{room.images[0]}}" alt="" err-SRC="img/na.jpg" class="img-responsive img-thumbnail" style="width:100px;height:100px"/>
 													</td>
-					                             <td><a ng-click="checkin(client)">#{{room.id}}</a></td>
+					                             <td><a  ng-click="viewroom(room)">#{{room.id}}</a></td>
 
 					                              <td class="text-right">{{room.type}}</td>
 					                              <td class="text-center"><span class="label label-warning">{{room.status}}</span> </td>
-					                              <td class="text-center"><span class="label label-success">{{room.lastupdate}}</span></td>
+					                         <td class="text-center"><span class="label label-success">{{room.lastupdate | date:'MM/dd/yyyy'}}</span></td>
 					                              <td style="width: 15%;">
 												  <a href="#" class="table-link">
 															<span class="fa-stack">
