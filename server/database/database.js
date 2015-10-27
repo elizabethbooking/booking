@@ -24,7 +24,6 @@ exports.getCredentials=function(username,pwd,fn){
         console.log(err);
     	return fn(true,err);}
     else {
-    	console.log(user);
       return fn(null,user);
     }
 
@@ -141,6 +140,42 @@ exports.Updaterooms=function(req,fn){
 
 };
 
+exports.CreateUser=function(req,fn){
+      if (typeof req.body.image==='undefined'){
+               req.body.image={};
+                req.body.image.data="";
+      };
+  
+
+	var user = Model.user({
+           company_id:req.body.company_id,
+           username:req.body.username,
+           password:req.body.password,
+           name:{
+           	    first:req.body.firstname,
+                last:req.body.lastname
+           },
+           image:req.body.image.data,
+           email:req.body.email,
+           role:req.body.role.name,
+           status:"Active",
+           datecreated:new Date()
+
+	});
+
+	                user.save(function(err,usr){
+					 		if (err){
+					 			console.log(err);
+					 			fn(true,err);}
+					 		else {
+					 	
+					 			fn(false,usr);
+					 		}
+					 	});
+
+
+};
+
 exports.Getrooms=function(req,fn){
     
   Model.inventory.find({ 'company_id': req.params.company_id }, function(err, rooms){
@@ -156,6 +191,36 @@ exports.Getrooms=function(req,fn){
 
 };
 
+
+exports.Getusers=function(req,fn){
+    
+  Model.user.find({ 'company_id': req.params.company_id }, function(err, users){
+    if (err) { 
+        console.log(err);
+    	return fn(true,err);}
+    else {
+      return fn(null,users);
+    }
+
+  });
+  
+
+};
+
+exports.Getuser=function(req,fn){
+     
+  Model.user.findOne({ 'username': req.params.username }, function(err, users){
+    if (err) { 
+        console.log(err);
+      return fn(true,err);}
+    else {
+      return fn(null,users);
+    }
+
+  });
+  
+
+};
 
 
 

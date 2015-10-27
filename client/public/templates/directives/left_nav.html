@@ -7,13 +7,13 @@
           <span>Dashboard</span>
         </a>
       </li>
-      <li>
-        <a href="#/policies" ng-click="policies(show)">
+      <li ng-show="$root.userRole=='admin'">
+        <a href="#/policies" >
           <i class="fa fa-calendar"></i>
           <span>Booking Policies</span>
         </a>
       </li>
-      <li>
+      <li ng-show="$root.userRole=='admin'">
         <a href="#/inventory">
           <i class="fa fa-table"></i>
           <span>Property Management</span>
@@ -25,8 +25,8 @@
           <span>Users</span>
           <i class="fa fa-chevron-circle-down drop-icon"></i>
         </a>
-        <ul class="dropdown-menu" >
-          <li>
+        <ul  class="dropdown-menu" >
+          <li ng-show="$root.userRole=='admin'">
             <a href="#/users">User list</a>
           </li>
           <li>

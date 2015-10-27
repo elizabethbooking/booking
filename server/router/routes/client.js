@@ -40,7 +40,7 @@ router.post('/login',function(req, res){
 
 		if (err)  { console.log(user); res.send(401);  }
 		else {	var token = jwt.encode({username: user}, tokenSecret);
-		res.status(200).json({token : token  });	
+		res.status(200).json({token : token ,role:user.role ,username:user.username});	
 	}
 });
 

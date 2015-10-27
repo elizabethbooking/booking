@@ -75,9 +75,10 @@ Booking.config(['$routeProvider', '$locationProvider','$httpProvider', function(
 
 }]);
 
-Booking.run(['$rootScope', '$location',  function($rootScope, $location){
+Booking.run(['$rootScope', '$location', 'LoginService', function($rootScope, $location,LoginService){
 
  $rootScope.loggedIn=true;
+ $rootScope.userRole=LoginService.user();
  
 /*
   $rootScope.$on("$routeChangeStart", function(event, next, current){

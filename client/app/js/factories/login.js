@@ -1,8 +1,12 @@
-Booking.factory('LoginService', ['$http',  '$rootScope', function($http, $rootScope){
+Booking.factory('LoginService', ['$http',  '$rootScope','$window', function($http, $rootScope,$window){
   return {
     auth: function(credentials, callback) {
       $http.post('/api/login', credentials)
         .success(function(data, status){
+          $window.sessionStorage.token = data.token;
+          $window.sessionStorage.role = data.role;
+             $rootScope.username=data.username;
+            $rootScope.loggedIn=true;
           callback(data, status);
         })
         .error(function(){
@@ -12,15 +16,17 @@ Booking.factory('LoginService', ['$http',  '$rootScope', function($http, $rootSc
 
     user: function(){
       var user = "";
-      if ($cookies.get('user')) {
-        $rootScope.loggedIn = user = JSON.parse($cookies.get('user'));
-      }
+
+             user =$window.sessionStorage.role;
+              console.log("user role " + user);
       return user;
     },
 
     logout: function(){
       $rootScope.loggedIn = null;
-      $cookies.remove('user');
+      delete $window.sessionStorage.token;
+      delete $window.sessionStorage.role;
+      $window.location.href='login.html';
     }
   };
 

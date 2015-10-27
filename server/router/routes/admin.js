@@ -8,40 +8,54 @@ var express = require('express')
 	     
 
 
-	     function ensureAuthenticated(req, res, next) {
-				  try
-					  {
-						var decoded = jwt.decode(req.headers.token, tokenSecret);
-						  req.user={};
-						  req.user._id=decoded.username;
-						  return next();
-					  }
-					  catch (e)
-					  {
-						   console.error(e);
-						 //  res.json(401,{error: "Server Error"});
-						   res.status(401).json({error: "Authentication Required"});
-					 }
-					  
-			}
+				     function ensureAuthenticated(req, res, next) {
+							  try
+								  {
+									var decoded = jwt.decode(req.headers.token, tokenSecret);
+									  req.user={};
+									  req.user._id=decoded.username;
+									  return next();
+								  }
+								  catch (e)
+								  {
+									   console.error(e);
+									 //  res.json(401,{error: "Server Error"});
+									   res.status(401).json({error: "Authentication Required"});
+								 }
+								  
+						}
 
-  
-      router.post('/Confirmreservation', function(req, res){
-          db.UpdateReservation(req,function(status,resp){
-              if(status){
-                   res.status(500).json({"Error": resp})
-              }else{
-              	res.status(200).json({"sucess": "ok"})
-              }
+			  
+			      router.post('/Confirmreservation', function(req, res){
+			          db.UpdateReservation(req,function(status,resp){
+			              if(status){
+			                   res.status(500).json({"Error": resp})
+			              }else{
+			              	res.status(200).json({"sucess": "ok"})
+			              }
 
-          });
-      	
-      });
+			          });
+			      	
+			      });
 
 
 		      router.post('/confirmCheckout', function(req, res){
 		          db.UpdateToCheckout(req,function(status,resp){
 		              if(status){
+		                   res.status(500).json({"Error": resp})
+		              }else{
+		              	res.status(200).json({"sucess": "ok"})
+		              }
+
+		          });
+		      	
+		      });
+		      
+
+		      router.post('/CreateUser', function(req, res){
+		          db.CreateUser(req,function(status,resp){
+		              if(status){
+		              	  console.log("eror Occurred ...");
 		                   res.status(500).json({"Error": resp})
 		              }else{
 		              	res.status(200).json({"sucess": "ok"})
@@ -75,6 +89,14 @@ var express = require('express')
 		      	
 		      });
 
+		    router.get('/users/:company_id', function(req, res){
+	          db.Getusers(req,function(status,users){
+	                     if(status){res.status(404).json({error: "Server Error"});}
+	                     else {res.status(200).json({result: users})}	
+
+	          	});
+	         }); 
+
 
                 
            router.get('/rooms/:company_id', function(req, res){
@@ -91,7 +113,17 @@ var express = require('express')
 	                     else {res.status(200).json({result: reservations})}	
 
 	          	});
-	      });     
+	      });  
+
+         router.get('/user/:username', function(req, res){
+         
+	          db.Getuser(req,function(status,user){
+	                     if(status){res.status(404).json({error: "Server Error"});}
+	                     else {res.status(200).json({result: user})}	
+
+	          	});
+	      }); 
+	         
       
 		   router.get('/', function(req, res){
 		         res.redirect('/admin.html');

@@ -30,10 +30,13 @@ var userSchema = new Schema({
   company_id  : String,
   username    : String,
   password    : String,
+  image:    String,
   name        : {
     first : String,
     last  : String
   },
+   datecreated:Date,
+   status:String,
   email       : String,
   role        : String,
   log         : [ String ]
