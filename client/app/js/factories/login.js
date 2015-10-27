@@ -5,7 +5,8 @@ Booking.factory('LoginService', ['$http',  '$rootScope','$window', function($htt
         .success(function(data, status){
           $window.sessionStorage.token = data.token;
           $window.sessionStorage.role = data.role;
-             $rootScope.username=data.username;
+          $window.sessionStorage.user=data.username
+        
             $rootScope.loggedIn=true;
           callback(data, status);
         })
@@ -26,6 +27,7 @@ Booking.factory('LoginService', ['$http',  '$rootScope','$window', function($htt
       $rootScope.loggedIn = null;
       delete $window.sessionStorage.token;
       delete $window.sessionStorage.role;
+      delete $window.sessionStorage.user;
       $window.location.href='login.html';
     }
   };

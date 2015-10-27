@@ -1,4 +1,4 @@
-Booking.factory('UsersService', ['$http', function($http){
+Booking.factory('UsersService', ['$http','$window' ,function($http,$window){
   return {
     data : function(callback) {
       $http.get('/api/users')
@@ -22,8 +22,9 @@ Booking.factory('UsersService', ['$http', function($http){
           callback(data);
         });
     },
-    getUser : function(username,callback) {
+    getUser : function(callback) {
       var company_id = 10001;
+      var username =  $window.sessionStorage.user;
       $http.get('/admin/user/'+ username)
         .success(function(data, status){
           callback(data);
