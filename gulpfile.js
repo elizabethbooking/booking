@@ -170,6 +170,6 @@ gulp.task('watch', function(){
   );
 });
 
-gulp.task('dev', ['login','libs', 'app', 'admin', 'app_css','app_lib_css', 'admin_lib_css', 'app_less', 'admin_less', 'server', 'browser-sync', 'watch']);
+gulp.task('dev', ['login','libs', 'app', 'admin', 'app_css','app_lib_css', 'admin_lib_css', 'app_less', 'admin_less', 'browser-sync', 'watch']);
 gulp.task('prod', ['login','libs', 'app', 'admin','app_css' ,'app_lib_css', 'admin_lib_css', 'app_less', 'admin_less', 'css', 'server']);
 

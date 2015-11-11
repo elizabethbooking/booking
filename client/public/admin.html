@@ -27,6 +27,88 @@
 </body>
 </html>
 
+<script type="text/ng-template" id="editcustomertmpl">
+ <div class="ngdialog-message">
+  <h4>Edit Reservation Details</h4>
+
+  <form class="form-horizontal">
+  <div class="form-group">
+        <label for="reservationid" class="control-label col-xs-4">Reservation Id</label>
+        <div class="col-xs-8">
+            <input type="text" class="form-control" id="reservationid" placeholder="Reservation id" ng-model="cust._id" disabled >
+        </div>
+    </div>
+
+   <div class="form-group">
+        <label for="stdate" class="control-label col-xs-4">Start Date</label>
+        <div class="col-xs-8">
+            <input type="text" class="form-control" id="stdate" placeholder="Start Date" ng-model="cust.start.date"  >
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="edate" class="control-label col-xs-4">End Date</label>
+        <div class="col-xs-8">
+            <input type="text" class="form-control" id="edate" placeholder="End Date" ng-model="cust.end.date"  >
+        </div>
+    </div>
+
+     <div class="form-group">
+        <label for="fname" class="control-label col-xs-4">First name</label>
+        <div class="col-xs-8">
+            <input type="text" class="form-control" id="fname" placeholder="First Name" ng-model="cust.name.first"  >
+        </div>
+    </div>
+     <div class="form-group">
+        <label for="lname" class="control-label col-xs-4">Last name</label>
+        <div class="col-xs-8">
+            <input type="text" class="form-control" id="lname" placeholder="Last Name" ng-model="cust.name.last"  >
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="email" class="control-label col-xs-4">Email</label>
+        <div class="col-xs-8">
+            <input type="email" class="form-control" id="email" placeholder="Email" ng-model="cust.email"  >
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="tel" class="control-label col-xs-4">Telephone</label>
+        <div class="col-xs-8">
+            <input type="text" class="form-control" id="tel" placeholder="telephone" ng-model="cust.telephone"  >
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="tel" class="control-label col-xs-4">Telephone</label>
+        <div class="col-xs-8">
+            <input type="text" class="form-control" id="tel" placeholder="telephone" ng-model="cust.telephone"  >
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="rooms" class="control-label col-xs-4">Rooms</label>
+        <div class="col-xs-8">
+            <input type="text" class="form-control" id="rooms" placeholder="rooms" ng-model="cust.rooms"  >
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="price" class="control-label col-xs-4">Price</label>
+        <div class="col-xs-8">
+            <input type="text" class="form-control" id="price" placeholder="Price" ng-model="cust.price"  >
+        </div>
+    </div>
+
+  </form>
+
+  
+  <div class="ngdialog-buttons">
+    <button type="button" class="ngdialog-button ngdialog-button-primary" ng-click="confirm('ok')">Update</button>
+
+  </div>
+</script>
 
 <script type="text/ng-template" id="customertmpl">
  <div class="ngdialog-message">

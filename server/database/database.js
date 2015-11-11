@@ -9,6 +9,7 @@ path          = require('path');
 tinylr        = require('tiny-lr');
 crypto        = require('crypto');
 config        =require('../config/config.js')
+mail=require('../email/mail.js');
 
 mongoose.connect(config.DatabaseUrl);
 var Objectid=mongoose.Types.Objectid;
@@ -45,16 +46,36 @@ exports.pendingConfirmation=function(req,fn){
   });
 
 };
+exports.editReservation=function(req,fn){
+   var query = { _id: req.body._id };
+   delete req.body["_id"];
+   Model.reservation.update(query,{ $set: req.body }, function(err, reservations){
+    if (err) { 
+        console.log(err);
+      return fn(true,err);}
+    else {
+      return fn(false,reservations);
+    }
 
+  });
+};
 
 exports.UpdateReservation=function(req,fn){
+  console.log( req.body);
     var query = { _id: req.body._id };
    Model.reservation.update(query,{ $set: { 'status': "card confirmed" }}, function(err, reservations){
     if (err) { 
         console.log(err);
     	return fn(true,err);}
     else {
-
+               var user={};
+                           user.email=req.body.email;
+                           user.reservationid=req.body._id
+                           user.name=req.body.name;
+                           
+                          
+            mail.sendWelcomeMail(user); 
+            
       return fn(false,reservations);
     }
 

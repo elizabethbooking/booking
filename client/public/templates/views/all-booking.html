@@ -1,0 +1,64 @@
+<div class="row">
+  <div class="col-md-2 col-lg-12">
+    <div class="main-box clearfix">
+      <div class="clearfix">
+        <h2 class="pull-left">All Booking</h2>
+                
+        <div class="filter-block pull-right">
+          <div class="form-group pull-left">
+            <input type="text" class="form-control" placeholder="Search..." ng-model="name.first">
+            <i class="fa fa-search search-icon"></i>
+          </div>
+                
+        </div>
+      </div>
+              
+      <div class="table-responsive clearfix">
+        <table class="table table-hover">
+          <thead>
+            <tr>
+              <th><a href="#"><span>Reservation #</span></a></th>
+              <th><a href="#" class="desc"><span>Date</span></a></th>
+              <th><a href="#" class="asc"><span>Customer</span></a></th>
+              <th class="text-center"><span>Status</span></th>
+              <th class="text-right"><span>Price</span></th>
+              <th>&nbsp;</th>
+            </tr>
+          </thead>
+          <tbody>
+
+          <tr dir-paginate="customer in pendingConfirmation | filter :name.first |  orderBy:start.date:true  | itemsPerPage:10   "  pagination-id="cust">
+           
+              <td>#{{customer._id}}</td>
+              <td>{{customer.start.date | date:'MM/dd/yyyy'}}</td>
+              <td><a ng-click="viewdetails(customer)">{{customer.name.first}} {{customer.name.last}}</a></td>
+              <td class="text-center"><span class="label label-success">{{customer.status}}</span></td>
+              <td class="text-right">&dollar; {{customer.price}}</td>
+              <td class="text-center" style="width: 20%;">
+                            <a ng-click="viewdetails(customer)" class="table-link">
+                              <span class="fa-stack">
+                                <i class="fa fa-square fa-stack-2x"></i>
+                                <i class="fa fa-search-plus fa-stack-1x fa-inverse"></i>
+                              </span>
+                            </a>
+                            <a ng-click="editdetails(customer)" class="table-link">
+                              <span class="fa-stack">
+                                <i class="fa fa-square fa-stack-2x"></i>
+                                <i class="fa fa-pencil fa-stack-1x fa-inverse"></i>
+                              </span>
+                            </a>
+                            
+                          </td>
+
+
+            </tr>
+           
+          </tbody>
+        </table>
+      </div>
+
+       <dir-pagination-controls   max-size="10"  direction-links="true"  boundary-links="true" class="pull-right" pagination-id="cust">  </dir-pagination-controls>      
+
+     
+    </div>
+  </div>

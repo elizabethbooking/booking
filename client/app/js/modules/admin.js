@@ -62,7 +62,16 @@ Booking.config(['$routeProvider', '$locationProvider','$httpProvider', function(
       templateUrl : '/templates/views/calender.html',
       controller  : 'CalendarController'
     })
-    
+
+   
+    .when('/bookings', {
+      templateUrl : '/templates/views/booking.html',
+      controller  : 'bookingController'
+    })
+   .when('/all-booking', {
+      templateUrl : '/templates/views/all-booking.html',
+      controller  : 'allbookingController'
+    }) 
    
     .when('/logout', {
       templateUrl : 'templates/admin/logout.html',

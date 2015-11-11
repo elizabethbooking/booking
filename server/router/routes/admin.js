@@ -38,6 +38,19 @@ var express = require('express')
 			      	
 			      });
 
+			      router.post('/EditReservation', function(req, res){
+			          db.editReservation(req,function(status,resp){
+			              if(status){
+			                   res.status(500).json({"Error": resp})
+			              }else{
+			              	res.status(200).json({"result": resp})
+			              }
+
+			          });
+			      	
+			      });
+
+
 
 		      router.post('/confirmCheckout', function(req, res){
 		          db.UpdateToCheckout(req,function(status,resp){
