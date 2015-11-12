@@ -6,8 +6,8 @@ var Handlebars = require('handlebars');
 
 /* for test kindly change this on your end */
 var sendmail = email.server.connect({
-  user: "nana.customercare@gmail.com",
-  password: "sebastian123!",
+  user: "*******",
+  password: "*******",
   host: "smtp.gmail.com",
   ssl: true
 });
