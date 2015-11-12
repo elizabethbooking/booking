@@ -42,12 +42,7 @@
     "underscore": "^1.8.3"
   },
   "dependencies": {
-    "email-templates": "^2.0.1",
-    "emailjs": "^1.0.0",
-    "handlebars": "^4.0.4",
     "jwt-simple": "^0.3.1",
-    "lodash": "^3.10.1",
-    "node-sass": "^3.4.1",
     "serve-static": "^1.10.0"
   }
 }

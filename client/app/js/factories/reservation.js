@@ -19,11 +19,6 @@ Booking.factory('ReservationService', ['$http', function($http){
        reservation.confirmReservation=function(data){
            return  $http.post('/admin/Confirmreservation',data);
        }
-       reservation.EditReservation=function(data){
-           return  $http.post('/admin/EditReservation',data);
-       }
-
-       
        reservation.confirmCheckin=function(data){
            return  $http.post('/admin/Confirmcheckin',data);
        }

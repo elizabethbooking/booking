@@ -42,7 +42,7 @@
             <i class="fa fa-search search-icon"></i>
           </div>
                   
-          <a href="#/all-booking" class="btn btn-primary pull-right">
+          <a href="#" class="btn btn-primary pull-right">
             <i class="fa fa-eye fa-lg"></i> View all bookings
           </a>
         </div>
@@ -62,14 +62,21 @@
           </thead>
           <tbody>
 
-          <tr dir-paginate="customer in pendingConfirmation | filter :name.first |  orderBy:start.date:true | itemsPerPage:5   "  pagination-id="cust">
+          <tr dir-paginate="customer in pendingConfirmation | filter :name.first | orderBy:'email' | itemsPerPage:5   "  pagination-id="cust">
            
               <td><a  ng-click="viewdetails(customer)">#{{customer._id}}</a></td>
               <td>{{customer.start.date | date:'MM/dd/yyyy'}}</td>
               <td><a ng-click="viewdetails(customer)">{{customer.name.first}} {{customer.name.last}}</a></td>
               <td class="text-center"><span class="label label-success">{{customer.status}}</span></td>
               <td class="text-right">&dollar; {{customer.price}}</td>
-              
+              <td class="text-center" style="width: 15%;">
+                <a href="#" class="table-link">
+                  <span class="fa-stack">
+                    <i class="fa fa-square fa-stack-2x"></i>
+                    <i class="fa fa-search-plus fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </td>
 
             </tr>
            
@@ -130,19 +137,10 @@
           <div class="main-box clearfix">
             <div class="clearfix">
               <h2 class="pull-left">Check-In</h2>
-
-        <div class="filter-block pull-right">
-          <div class="form-group pull-left">
-            <input type="text" class="form-control" placeholder="Search..." ng-model="name.first">
-            <i class="fa fa-search search-icon"></i>
-          </div>
-                  
-          <a href="#/all-booking" class="btn btn-primary pull-right">
-            <i class="fa fa-eye fa-lg"></i> View all 
-          </a>
-        </div>
-
-
+              <div id="reportrange" class="pull-right daterange-filter">
+                <i class="icon-calendar"></i>
+                <span></span> <b class="caret"></b>
+              </div>
             </div>
 
             <div class="table-responsive">
@@ -196,11 +194,7 @@
                   <div class="form-group pull-left">
                     <input type="text" class="form-control" placeholder="Search...">
                     <i class="fa fa-search search-icon"></i>
-
                   </div>
-                   <a href="#/all-booking" class="btn btn-primary pull-right">
-            <i class="fa fa-eye fa-lg"></i> View all 
-          </a>
                 </div>
               </div>
 
